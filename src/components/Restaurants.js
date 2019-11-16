@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Grid } from 'semantic-ui-react';
+import { Button, Grid } from 'semantic-ui-react';
 import Text from './Text';
 
 const Restaurants = () => {
@@ -24,7 +24,7 @@ const Restaurants = () => {
 					<p>{description}</p>
 					<p>{email}</p>
 					<Link to={`/restaurants/${id}`}>
-						<button className="massive ui button">Check the menu</button>
+						<button class="massive ui button">Check the menu</button>
 					</Link>
 				</Grid.Column>
 			</Grid>

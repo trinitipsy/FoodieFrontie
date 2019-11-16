@@ -1,64 +1,86 @@
-
-import React, { Fragment, useEffect, useState } from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import axios from 'axios';
+import Text from './Text';
 
 const RestaurantDetails = ({restaurantId}) => {
-    const[RestaurantDetails, setRestaurantDetails] = useState([]);
+    const [restaurant, setRestaurant] = useState({});
+    const [menu, setMenu] = useState([]);
+    const [cart, setCart] = useState({foods: []});
+
+    const addItem = (food) => {
+        cart.foods.push(food);
+        setCart({foods: cart.foods});
+    };
+
+    const clearAllItems = () => {
+        setCart({foods: []});
+    };
+
+    const createOrder = () => {
+        const order = {
+            foodIds: cart.foods.map((f) => f.id),
+            deliveryAddress: '<unknown>'
+        };
+
+        const response = axios.post(
+            'http://localhost:8080/orders',
+            order,
+            {headers: {'Content-Type': 'application/json'}}
+        );
+
+        response.then(({data}) => {
+            alert(`Order created with id=${data.id}`);
+            clearAllItems();
+        });
+    };
+
+    const fetchRestaurant = async () => {
+        const {data} = await axios(`http://localhost:8080/restaurants/${restaurantId}`);
+        setRestaurant(data);
+        setMenu(data.menu);
+    };
 
     useEffect(() => {
-        const fetchRestaurantDetails = async () => {
-            const { data } = await axios(`http://localhost:8080/restaurants/${restaurantId}`);
-            setRestaurantDetails(data);
-        }
-        fetchRestaurantDetails();
-    }, []);
+        fetchRestaurant();
+    }, [cart]);
 
+    return (
+        <Fragment>
+            <Text fontSize={48}>{restaurant.name}</Text>
+            <Text>{restaurant.description}</Text>
 
+            <Text>
+                ================================== MENU ==================================
+            </Text>
+            {
+                menu.map((food, index) => {
+                    return (
+                        <Fragment key={`restoran-${index}`}>
+                            <Text>{food.name}</Text>
+                            <Text>{food.price}</Text>
+                            <button class="massive ui button" onClick={() => addItem(food)}>Add to cart</button>
+                        </Fragment>
+                    )
+                })
+            }
 
-    return RestaurantDetails.map(({name, description, price}) => {
-        return (
-            <Fragment>
-            <h1>{name}</h1>
-            <h4>{description}</h4>
-            <h4>{price}</h4>
-            </Fragment>
-        )
-    })
- }
+            <Text>
+                ================================== CART ==================================
+            </Text>
 
+            {
+                cart.foods.map((food, index) => {
+                    return (
+                        <Fragment key={`order-${index}`}>
+                            <h2>{food.name} | {food.price}</h2>
+                        </Fragment>
+                    )
+                })
+            }
+            <button onClick={() => createOrder()}>Submit Order</button>
 
+        </Fragment>
+    )
+};
 
-// const restaurant_RestaurantDetails = {
-//     "id": 1,
-//     "name": "MarcoPolo",
-//     "email": "nesto@gmail.com",
-//     "address": "Desanke Maksimovic 18",
-//     "description": "most delicious food",
-//     "RestaurantDetails": [
-//         {
-//             "id": 6,
-//             "name": "pizza",
-//             "price": 7.5,
-//             "description": "pizza capricoza"
-//         },
-//         {
-//             "id": 8,
-//             "name": "pizza",
-//             "price": 5.5,
-//             "description": "pizza capricoza"
-//         },
-//         {
-//             "id": 10,
-//             "name": "yellow breakfast",
-//             "price": 3,
-//             "description": "omelet with vegetable"
-//         },
-//         {
-//             "id": 11,
-//             "name": "beef steak",
-//             "price": 27,
-//             "description": "beef steak"
-//         }
-//     ]
-// }
 export default RestaurantDetails;
