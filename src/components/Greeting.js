@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Image, Grid } from 'semantic-ui-react';
 import Text from './Text';
-const Header = () => (
+const Greeting = () => (
     <StyledWrapper>
         <Grid>
             <Grid.Column width={4}>
@@ -35,4 +35,4 @@ const StyledWrapper = styled.div`
         width: 60%;
     }
 `;
-export default Header;
+export default Greeting;
