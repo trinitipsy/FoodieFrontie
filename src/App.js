@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import { Router } from '@reach/router';
+import Navbar from './components/Navbar'
+import Contact from './components/Contact';
+import LandingPage from './components/LandingPage';
+import Restaurants from './components/Restaurants';
+import RestaurantDetails from './components/RestaurantDetails';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 
+const App = () => (
+  <StyledWrapper>
+    <Navbar />
+    <Router>
+      <LandingPage path="/" />
+      <Restaurants path="/restaurants" /> 
+      <RestaurantDetails path="/restaurants/:restaurantId" />
+      <Contact path="/contact" />
+      <NotFound default />
+    </Router>
+  </StyledWrapper>
+);
+const StyledWrapper = styled.div`
+  text-align: center;
+  background-color: #0d0d0d;
+
+`;
 export default App;
