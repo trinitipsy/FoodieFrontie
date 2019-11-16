@@ -3,21 +3,21 @@ import styled from 'styled-components';
 import { Image, Grid } from 'semantic-ui-react';
 import Text from './Text';
 const Greeting = () => (
-    <StyledWrapper>
-        <Grid>
-            <Grid.Column width={4}>
-                <Image className="logo" circular src='https://fbcd.co/product-lg/4d8390472d71fd01cb4c2bcbf90a43ec_resize.jpg' />
-            </Grid.Column>
-            <Grid.Column width={9}>
-                <Text fontSize={120}>FoodSetGo</Text>
-                <Text>Welcome to the unique online service for easy and fast ordering
+  <StyledWrapper>
+    <Grid>
+      <Grid.Column width={4}>
+        <Image className="logo" circular src='https://fbcd.co/product-lg/4d8390472d71fd01cb4c2bcbf90a43ec_resize.jpg' />
+      </Grid.Column>
+      <Grid.Column width={9}>
+        <Text fontSize={120}>FoodSetGo</Text>
+        <Text>Welcome to the unique online service for easy and fast ordering
              of food <br />from the best local restaurants. <br />Forget about waiting
              on your phone connection, outdated flyers, and wrong orders! <br />
-                    Enjoy the taste of the best food ...
+          Enjoy the taste of the best food ...
                 </Text>
-            </Grid.Column>
-        </Grid>
-    </StyledWrapper>
+      </Grid.Column>
+    </Grid>
+  </StyledWrapper>
 );
 
 const StyledWrapper = styled.div`

@@ -3,10 +3,10 @@ import Greeting from '././Greeting';
 import AboutSection from './AboutSection';
 
 const LandingPage = () => (
-    <Fragment>
-        <Greeting />
-        <AboutSection />
-    </Fragment>
+  <Fragment>
+    <Greeting />
+    <AboutSection />
+  </Fragment>
 )
 
 export default LandingPage;

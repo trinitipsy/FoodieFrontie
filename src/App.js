@@ -14,7 +14,7 @@ const App = () => (
     <Navbar />
     <Router>
       <LandingPage path="/" />
-      <Restaurants path="/restaurants" /> 
+      <Restaurants path="/restaurants" />
       <RestaurantDetails path="/restaurants/:restaurantId" />
       <Contact path="/contact" />
       <NotFound default />
