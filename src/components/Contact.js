@@ -2,23 +2,24 @@ import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Button, Form, Message } from 'semantic-ui-react';
+import Text from './Text';
 
 const Footer = () => (
     <StyledWrapper>
         <Grid className="grid_parent">
 
             <Grid.Column className="contact" width={10}>
-                <h2><b>Contact us</b></h2>
-                <h6>Phone: <i>032/433-324</i></h6>
-                <h6>Email: <i>FoodSetGo@gmail.com</i></h6>
-                <h6>Address: <i>Stepe Stepanovica 16</i></h6>
-                <h6>Follow us on   <button className="ui facebook grey button">
+                <Text><b>Contact us</b></Text>
+                <Text>Phone: <i>032/433-324</i></Text>
+                <Text>Email: <i>FoodSetGo@gmail.com</i></Text>
+                <Text>Address: <i>Stepe Stepanovica 16</i></Text>
+                <Text>Follow us on   <button className="ui facebook grey button">
                     <i className="facebook icon"></i>
-                    Facebook</button></h6>
+                    Facebook</button></Text>
                
             </Grid.Column>
             <Grid.Column floated="right" width={6}>
-                <h2>Or send us direct message</h2>
+                <Text>Or send us direct message</Text>
                 <Form success>
                     <Form.Input placeholder='Email: joe@schmoe.com' />
                     <Message
@@ -39,11 +40,5 @@ margin: 100px;
 .grid_parent {
    
 }
-h6, h2 {
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
 `;
 export default Footer;

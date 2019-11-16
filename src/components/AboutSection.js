@@ -1,8 +1,7 @@
 import React from 'react'
 import { Grid} from 'semantic-ui-react'
-import styled from 'styled-components'
+import styled from 'styled-components';
 import Text from './Text';
-
 
 const AboutSection = () => <StyledWrapper>
     <Grid columns={3} divided>

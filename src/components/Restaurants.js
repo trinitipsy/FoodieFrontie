@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Button, Grid } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import Text from './Text';
 
 const Restaurants = () => {
@@ -21,8 +21,8 @@ const Restaurants = () => {
 			<Grid>
 				<Grid.Column width={16}>
 					<Text fontSize={48}>{name}</Text>
-					<p>{description}</p>
-					<p>{email}</p>
+					<Text>{description}</Text>
+					<Text>{email}</Text>
 					<Link to={`/restaurants/${id}`}>
 						<button class="massive ui button">Check the menu</button>
 					</Link>
@@ -37,15 +37,6 @@ const StyledWrapper = styled.div`
 	background-size: cover;
 	padding: 80px;
 
-		p {
-				color: white;
-				font-family: Arial, Helvetica, sans-serif;
-				text-shadow: -9px 6px 4px #000000 ;
-		}
-		.text {
-				font-size: 150%;
-				padding-left: 10px;
-		}
 	`;
 
 
