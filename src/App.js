@@ -6,6 +6,7 @@ import Contact from './components/Contact';
 import LandingPage from './components/LandingPage';
 import Restaurants from './components/Restaurants';
 import RestaurantDetails from './components/RestaurantDetails';
+import LogIn from './components/LogIn';
 
 const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 
@@ -17,8 +18,10 @@ const App = () => (
       <Restaurants path="/restaurants" />
       <RestaurantDetails path="/restaurants/:restaurantId" />
       <Contact path="/contact" />
+      <LogIn path="/log-in" />
       <NotFound default />
     </Router>
+    
   </StyledWrapper>
 );
 
