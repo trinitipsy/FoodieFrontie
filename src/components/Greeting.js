@@ -7,7 +7,7 @@ const Greeting = () => (
   <StyledWrapper>
     <Grid>
       <Grid.Column width={4}>
-        <Image className="logo" circular src='logo.jpg' />
+        <Image className="logo" circular src='logo-cropped.jpg' />
       </Grid.Column>
       <Grid.Column width={9}>
         <Text fontSize={120}>FoodSetGo</Text>
@@ -32,8 +32,8 @@ const StyledWrapper = styled.div`
   background-size: cover;
    
   .logo {
-    eight: 50%;
-    width: 60%;
+    height: 30%;
+    width: 30%;
   }
 `;
 
