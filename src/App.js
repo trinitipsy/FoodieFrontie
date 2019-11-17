@@ -21,6 +21,7 @@ const App = () => (
     </Router>
   </StyledWrapper>
 );
+
 const StyledWrapper = styled.div`
   text-align: center;
   background-color: #0d0d0d;

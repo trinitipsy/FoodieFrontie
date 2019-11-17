@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Image, Grid } from 'semantic-ui-react';
 import Text from './Text';
+
 const Greeting = () => (
   <StyledWrapper>
     <Grid>
@@ -21,18 +22,19 @@ const Greeting = () => (
 );
 
 const StyledWrapper = styled.div`
-    margin: 0;
-    margin-bottom: 50px;
-    background-color: #11111;
-    padding: 50px;
-    text-align: center;
-    background-image: url("https://www.foodiesfeed.com/wp-content/uploads/2019/02/messy-pizza-on-a-black-table.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+  margin: 0;
+  margin-bottom: 50px;
+  background-color: #11111;
+  padding: 50px;
+  text-align: center;
+  background-image: url("https://www.foodiesfeed.com/wp-content/uploads/2019/02/messy-pizza-on-a-black-table.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
    
-    .logo {
-        height: 50%;
-        width: 60%;
-    }
+  .logo {
+    eight: 50%;
+    width: 60%;
+  }
 `;
+
 export default Greeting;

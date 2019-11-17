@@ -19,7 +19,6 @@ const Navbar = () => (
 )
 
 const StyledWrapper = styled.ul`
-
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -51,4 +50,5 @@ li:hover {
   float: right;
 }
 `;
+
 export default Navbar;

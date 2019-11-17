@@ -31,14 +31,12 @@ const Restaurants = () => {
     </StyledWrapper>
   ));
 }
+
 const StyledWrapper = styled.div`
-	background-image: url("https://image.freepik.com/free-photo/dark-texture-chalk-board-black-board_28629-1027.jpg");
+  background-image: url("https://image.freepik.com/free-photo/dark-texture-chalk-board-black-board_28629-1027.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding: 80px;
-
-	`;
-
-
-
+  `;
+  
 export default Restaurants;
