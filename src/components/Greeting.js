@@ -7,7 +7,7 @@ const Greeting = () => (
   <StyledWrapper>
     <Grid>
       <Grid.Column width={4}>
-        <Image className="logo" circular src='https://fbcd.co/product-lg/4d8390472d71fd01cb4c2bcbf90a43ec_resize.jpg' />
+        <Image className="logo" circular src='logo.jpg' />
       </Grid.Column>
       <Grid.Column width={9}>
         <Text fontSize={120}>FoodSetGo</Text>
@@ -27,7 +27,7 @@ const StyledWrapper = styled.div`
   background-color: #11111;
   padding: 50px;
   text-align: center;
-  background-image: url("https://www.foodiesfeed.com/wp-content/uploads/2019/02/messy-pizza-on-a-black-table.jpg");
+  background-image: url('greeting.jpg');
   background-repeat: no-repeat;
   background-size: cover;
    
