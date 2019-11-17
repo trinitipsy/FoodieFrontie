@@ -1,15 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const LogIn = () => (
+const SignUp = () => (
   <StyledWrrapper class="ui form">
     <div class="field">
       <input type="text" placeholder="Name" />
     </div>
     <div class="field">
+      <input type="text" placeholder="Surname" />
+    </div>
+    <div class="field">
+      <input type="text" placeholder="Address" />
+    </div>
+    <div class="field">
+      <input type="text" placeholder="Email" />
+    </div>
+    <div class="field">
       <input type="text" placeholder="Password" />
     </div>
-    <button class="ui secondary button">Log in</button>
+    <button class="ui secondary button">Sign Up</button>
   </StyledWrrapper>
 
 );
@@ -22,4 +31,4 @@ const StyledWrrapper = styled.div`
   }
   `;
 
-export default LogIn;
+export default SignUp;
