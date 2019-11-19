@@ -9,7 +9,7 @@ import RestaurantDetails from './components/RestaurantDetails';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
 import AddRestaurant from './components/AddRestaurant';
-
+import Footer from './components/Footer';
 const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 
 const App = () => (
@@ -25,6 +25,7 @@ const App = () => (
       <AddRestaurant path="add-restaurant" />
       <NotFound default />
     </Router>
+    <Footer />
   </StyledWrapper>
 );
 
