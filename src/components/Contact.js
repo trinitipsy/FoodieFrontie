@@ -1,5 +1,4 @@
 import React from 'react';
-import {  } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Form, Message, Grid } from 'semantic-ui-react';
 import Text from './Text';
