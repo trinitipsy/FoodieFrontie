@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import Text from './Text';
+import { Link } from '@reach/router';
 
 const RestaurantDetails = ({ restaurantId }) => {
   const [restaurant, setRestaurant] = useState({});
@@ -58,7 +59,13 @@ const RestaurantDetails = ({ restaurantId }) => {
             <Fragment key={`restoran-${index}`}>
               <Text>{food.name}</Text>
               <Text>{food.price}</Text>
-              <button class="massive ui button" onClick={() => addItem(food)}>Add to cart</button>
+              <button class="ui grey button" onClick={() => addItem(food)}>Add to cart</button>
+              <Link to={`/restaurants/:restaurantId/update-food`}>
+                <button class="ui grey button" onClick={() => addItem(food)}>Update food</button>
+              </Link>
+              <Link to={`/restaurants/:restaurantId/delete-food`} >
+                <button class="ui grey button" onClick={() => addItem(food)}>Delete food</button>
+              </Link>
             </Fragment>
           )
         })

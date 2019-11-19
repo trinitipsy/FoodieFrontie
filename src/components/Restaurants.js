@@ -26,7 +26,7 @@ const Restaurants = () => {
           <Link to={`/restaurants/${id}`}>
             <button className="ui grey button">Check the menu</button>
           </Link>
-          <Link to={`/restaurants/${id}`}>
+          <Link to={`/restaurants/update-restaurant`}>
             <button className="ui grey button">Update restaurant</button>
           </Link>
           <Link to={`/restaurants/delete-restaurant`}>

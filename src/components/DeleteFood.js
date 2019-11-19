@@ -6,11 +6,12 @@ import { Form, Grid } from 'semantic-ui-react';
 
 
 const DeleteRestaurant = () => {
-  const [id, setId] = useState('');
+  const [idRestaurant, setidRestaurant] = useState('');
+  const [idFood, setidFood] = useState('');
 
   const submit = (event) => {
     const response = axios.delete(
-      `http://localhost:8080/restaurants/${id}`,
+      `http://localhost:8080/foods/${idRestaurant}/${idFood}`,
       { headers: { 'Content-Type': 'application/json' } }
     );
     event.preventDefault();
@@ -21,9 +22,10 @@ const DeleteRestaurant = () => {
       <form onSubmit={submit}>
         <Grid centered columns={3}>
           <Grid.Column>
-            <Text>Be careful! <br />You are about to delete a restaurant from database.</Text>
+            <Text>Be careful! <br />You are about to delete a food from database.</Text>
             <Form success>
-              <Form.Input type="text" name='id' onChange={event => setId(event.target.value)} placeholder="Id: " />
+              <Form.Input type="text" name='idRestaurant' onChange={event => setidRestaurant(event.target.value)} placeholder="Restaurant Id: " />
+              <Form.Input type="text" name='idFood' onChange={event => setidFood(event.target.value)} placeholder="Food Id: " />
               <button className="ui grey button">Delete restaurant</button>
             </Form>
           </Grid.Column>
