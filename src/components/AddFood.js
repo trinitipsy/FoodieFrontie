@@ -4,18 +4,18 @@ import { Form, Grid } from 'semantic-ui-react';
 import Text from './Text';
 import styled from 'styled-components';
 
-const AddRestaurant = () => {
-  const [restaurant, setRestaurant] = useState({
+const AddFood = () => {
+  const [food, setfood] = useState({
     name: '',
-    email: '',
-    address: '',
-    description: ''
+    price: '',
+    description: '',
+    restaurantId: ''
   });
 
   const submit = (event) => {
     const response = axios.post(
-      'http://localhost:8080/restaurants/',
-      restaurant,
+      'http://localhost:8080/foods/',
+      food,
       { headers: { 'Content-Type': 'application/json' } }
     );
 
@@ -26,8 +26,8 @@ const AddRestaurant = () => {
   };
 
   const handleChange = (event) => {
-    restaurant[event.target.name] = event.target.value;
-    setRestaurant(restaurant);
+    food[event.target.name] = event.target.value;
+    setfood(food);
   };
 
   return (
@@ -38,10 +38,10 @@ const AddRestaurant = () => {
             <Text>Welcome! <br />Please enter information.</Text>
             <Form success>
               <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
-              <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
-              <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
+              <Form.Input type="text" name='price' onChange={handleChange} placeholder="Price: " />
               <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
-              <button className="ui grey button">Add restaurant</button>
+              <Form.Input type="text" name='restaurantId' onChange={handleChange} placeholder="Restaurant Id: " />
+              <button className="ui grey button">Add food</button>
             </Form>
           </Grid.Column>
         </Grid>
@@ -55,4 +55,4 @@ const StyledWrapper = styled.div`
   margin: 100px;
 `;
 
-export default AddRestaurant;
+export default AddFood;

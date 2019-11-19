@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-import { Dropdown } from 'semantic-ui-react';
-
 const Navbar = () => (
   <StyledWrapper>
     <Link to="/">
@@ -16,6 +14,9 @@ const Navbar = () => (
     </Link>
     <Link to="/add-restaurant">
       <li>Add restaurant</li>
+    </Link>
+    <Link to="/add-food">
+      <li>Add food</li>
     </Link>
     <Link to="/log-in">
       <li>Log In</li>

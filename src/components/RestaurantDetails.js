@@ -61,10 +61,10 @@ const RestaurantDetails = ({ restaurantId }) => {
               <Text>{food.price}</Text>
               <button class="ui grey button" onClick={() => addItem(food)}>Add to cart</button>
               <Link to={`/restaurants/:restaurantId/update-food`}>
-                <button class="ui grey button" onClick={() => addItem(food)}>Update food</button>
+                <button class="ui grey button">Update food</button>
               </Link>
               <Link to={`/restaurants/:restaurantId/delete-food`} >
-                <button class="ui grey button" onClick={() => addItem(food)}>Delete food</button>
+                <button class="ui grey button">Delete food</button>
               </Link>
             </Fragment>
           )
