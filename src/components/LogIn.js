@@ -1,25 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import Text from './Text';
+import { Form, Grid } from 'semantic-ui-react';
 
 const LogIn = () => (
-  <StyledWrrapper class="ui form">
-    <div class="field">
-      <input type="text" placeholder="Name" />
-    </div>
-    <div class="field">
-      <input type="text" placeholder="Password" />
-    </div>
-    <button class="ui secondary button">Log in</button>
-  </StyledWrrapper>
+  <StyledWrapper class="ui form">
+    <Grid centered columns={3}>
+    <Grid.Column>
+        <Text>Welcome! <br />Please enter your name and password below.</Text>
+        <Form success>
+          <Form.Input placeholder='Name:' />
+          <Form.Input placeholder='Email: joe@schmoe.com' />
+          <button className="ui grey button">Log in</button>
+        </Form>
+      </Grid.Column>
+    </Grid>
+  </StyledWrapper>
 
 );
 
-const StyledWrrapper = styled.div`
-  background-color: #0d0d0d;
-  margin: 20px;
-  label {
-    color: white;
-  }
-  `;
+const StyledWrapper = styled.div`
+  padding: 60px;
+  margin: 100px;
+`;
 
 export default LogIn;

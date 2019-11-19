@@ -24,13 +24,14 @@ const Restaurants = () => {
           <Text>{description}</Text>
           <Text>{email}</Text>
           <Link to={`/restaurants/${id}`}>
-            <button class="massive ui button">Check the menu</button>
+            <button className="ui grey button">Check the menu</button>
           </Link>
         </Grid.Column>
       </Grid>
     </StyledWrapper>
   ));
 }
+
 
 const StyledWrapper = styled.div`
   background-image: url("https://image.freepik.com/free-photo/dark-texture-chalk-board-black-board_28629-1027.jpg");

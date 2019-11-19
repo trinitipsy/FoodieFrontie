@@ -1,34 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Form, Grid } from 'semantic-ui-react';
+import Text from './Text';
 
 const SignUp = () => (
-  <StyledWrrapper class="ui form">
-    <div class="field">
-      <input type="text" placeholder="Name" />
-    </div>
-    <div class="field">
-      <input type="text" placeholder="Surname" />
-    </div>
-    <div class="field">
-      <input type="text" placeholder="Address" />
-    </div>
-    <div class="field">
-      <input type="text" placeholder="Email" />
-    </div>
-    <div class="field">
-      <input type="text" placeholder="Password" />
-    </div>
-    <button class="ui secondary button">Sign Up</button>
-  </StyledWrrapper>
-
+  <StyledWrapper class="ui form">
+    <Grid centered columns={3}>
+      <Grid.Column>
+        <Text>Welcome! <br />Please enter your informations below.</Text>
+        <Form success>
+          <Form.Input placeholder='Name:' />
+          <Form.Input placeholder='Email: example@gmail.come ' />
+          <Form.Input placeholder='Address: ' />
+          <Form.Input placeholder='Password: ' />
+          <button className="ui grey button">Sign up</button>
+        </Form>
+      </Grid.Column>
+    </Grid>
+  </StyledWrapper>
 );
 
-const StyledWrrapper = styled.div`
-  background-color: #0d0d0d;
-  margin: 20px;
-  label {
-    color: white;
-  }
-  `;
+const StyledWrapper = styled.div`
+  padding: 60px;
+  margin: 100px;
+`;
 
 export default SignUp;
