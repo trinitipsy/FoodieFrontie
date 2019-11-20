@@ -4,17 +4,17 @@ import { Form, Grid } from 'semantic-ui-react';
 import Text from './Text';
 import styled from 'styled-components';
 
-const AddFood = () => {
+const AddFood = ({ restaurantId }) => {
   const [food, setfood] = useState({
     name: '',
     price: '',
     description: '',
-    restaurantId: ''
   });
 
   const submit = (event) => {
+    console.log(food.name);
     const response = axios.post(
-      'http://localhost:8080/foods/',
+      `http://localhost:8080/foods/${restaurantId}`,
       food,
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -40,7 +40,6 @@ const AddFood = () => {
               <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
               <Form.Input type="text" name='price' onChange={handleChange} placeholder="Price: " />
               <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
-              <Form.Input type="text" name='restaurantId' onChange={handleChange} placeholder="Restaurant Id: " />
               <button className="ui grey button">Add food</button>
             </Form>
           </Grid.Column>

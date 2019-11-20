@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Greeting from '././Greeting';
+import Greeting from './Greeting';
 import AboutSection from './AboutSection';
 
 const LandingPage = () => (

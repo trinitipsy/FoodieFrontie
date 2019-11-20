@@ -4,24 +4,24 @@ import Text from './Text';
 import styled from 'styled-components';
 import { Form, Grid } from 'semantic-ui-react';
 
-
-const UpdateRestaurant = ({ restaurantId, navigate }) => {
-  const [restaurant, setRestaurant] = useState({
+const UpdateUser = ({ userId, navigate }) => {
+  const [user, setUser] = useState({
     name: '',
-    email: '',
+    surname: '',
     address: '',
-    description: ''
+    email: '',
+    password: ''
   });
 
-  const submit = (event) => {
+  const submit = event => {
     const response = axios.put(
-      `http://localhost:8080/restaurants/${restaurantId}`,
-      restaurant,
+      `http://localhost:8080/users/${userId}`,
+      user,
       { headers: { 'Content-Type': 'application/json' } }
     );
     response
       .then(() => {
-        navigate('/restaurants');
+        navigate('/users');
       })
       .catch(err => {
         alert(`Error occurred: ${err.message}`);
@@ -30,8 +30,8 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
   };
 
   const handleChange = (event) => {
-    restaurant[event.target.name] = event.target.value;
-    setRestaurant(restaurant);
+    user[event.target.name] = event.target.value;
+    setUser(user);
   };
 
   return (
@@ -39,13 +39,14 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
       <form onSubmit={submit}>
         <Grid centered columns={3}>
           <Grid.Column>
-            <Text>Be careful! <br />You are about to update a restaurant info in database.</Text>
+            <Text>Be careful! <br />You are about to update a user info in database.</Text>
             <Form success>
               <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
-              <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
+              <Form.Input type="text" name='surname' onChange={handleChange} placeholder="Surname: " />
               <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
-              <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
-              <button className="ui grey button">Update restaurant</button>
+              <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
+              <Form.Input type="text" name='password' onChange={handleChange} placeholder="Password: " />
+              <button className="ui grey button">Update user</button>
             </Form>
           </Grid.Column>
         </Grid>
@@ -54,10 +55,9 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
 
   )
 };
-
 const StyledWrapper = styled.div`
-  padding: 60px;
-  margin: 100px;
+padding: 60px;
+margin: 100px;
 `;
 
-export default UpdateRestaurant;
+export default UpdateUser;

@@ -2,20 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Grid, Button, Header, Icon, Modal } from 'semantic-ui-react';
+import { Grid, Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
 import Text from './Text';
 
-const Restaurants = () => {
+const Restaurants = ({ isAdmin = true }) => {
   const [restaurants, setRestaurants] = useState([]);
-  const [modalState, setModalState] = useState('');
+  const [modalStateDelete, setModalStateDelete] = useState('');
 
   const handleOpen = () => {
-    setModalState(true);
+    setModalStateDelete(true);
   };
 
   const handleClose = () => {
-    setModalState(false);
+    setModalStateDelete(false);
   };
+
   const deleteRestaurant = (id) => {
     console.log(id);
     const response = axios.delete(
@@ -24,6 +25,8 @@ const Restaurants = () => {
       { headers: { 'Content-Type': 'application/json' } }
     );
   };
+
+
   useEffect(() => {
     const fetchRestaurants = async () => {
       const { data } = await axios('http://localhost:8080/restaurants');
@@ -39,16 +42,22 @@ const Restaurants = () => {
           <Text fontSize={48}>{name}</Text>
           <Text>{description}</Text>
           <Text>{email}</Text>
+
           <Link to={`/restaurants/${id}`}>
             <button className="ui grey button">Check the menu</button>
           </Link>
-          <Link to={`/restaurants/${id}/update-restaurant`}>
+          {isAdmin &&
+          <Link to={`/restaurants/${id}/update`}>
             <button className="ui grey button">Update restaurant</button>
+          </Link>
+          }
+          <Link to={`/restaurants/${id}/add-food`}>
+            <button className="ui grey button">Add food</button>
           </Link>
 
           <Modal
             trigger={<button className="ui grey button" onClick={handleOpen}>Delete restaurant</button>}
-            open={modalState}
+            open={modalStateDelete}
             onClose={handleClose}
             basic
             size='small'
@@ -57,16 +66,18 @@ const Restaurants = () => {
               <h3>Are you sure you want to delete restaurant {name}?</h3>
             </Modal.Content>
             <Modal.Actions>
-              <Button color='red' onClick={() => deleteRestaurant(id)} inverted>
-                <Icon name='checkmark' /> Yes, sure
+            <Button color='red' onClick={() => deleteRestaurant(id)} inverted>
+              <Icon name='checkmark' /> Yes, sure
             </Button>
-              <Button color='grey' onClick={handleClose} inverted>
-                <Icon name='checkmark' /> No
+            <Button color='grey' onClick={handleClose} inverted>
+              <Icon name='checkmark' /> No
             </Button>
             </Modal.Actions>
           </Modal>
         </Grid.Column>
       </Grid>
+
+
     </StyledWrapper>
   ));
 }

@@ -5,23 +5,26 @@ import styled from 'styled-components';
 import { Form, Grid } from 'semantic-ui-react';
 
 
-const UpdateFood = () => {
-  const [id, setId] = useState('');
+const UpdateFood = ({ foodId, navigate }) => {
   const [food, setFood] = useState({
     name: '',
     price: '',
-    desctiption: ''
+    description: '',
   });
 
   const submit = (event) => {
     const response = axios.put(
-      `http://localhost:8080/foods/${id}`,
+      `http://localhost:8080/foods/${foodId}`,
       food,
       { headers: { 'Content-Type': 'application/json' } }
     );
-    response.then(value => {
-      console.log(value.data);
-    });
+    response
+      .then(() => {
+        navigate('/restaurants');
+      })
+      .catch(err => {
+        alert(`Error occurred: ${err.message}`);
+      });
     event.preventDefault();
   };
 
@@ -37,7 +40,6 @@ const UpdateFood = () => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a food in database.</Text>
             <Form success>
-              <Form.Input type="text" name='id' onChange={event => setId(event.target.value)} placeholder="Id: " />
               <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
               <Form.Input type="text" name='price' onChange={handleChange} placeholder="Price: " />
               <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />

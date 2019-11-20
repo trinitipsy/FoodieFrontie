@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { Grid, Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
 import axios from 'axios';
 import Text from './Text';
 import { Link } from '@reach/router';
@@ -7,6 +8,7 @@ const RestaurantDetails = ({ restaurantId }) => {
   const [restaurant, setRestaurant] = useState({});
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState({ foods: [] });
+  const [modalStateDelete, setModalStateDelete] = useState('');
 
   const addItem = (food) => {
     cart.foods.push(food);
@@ -30,7 +32,7 @@ const RestaurantDetails = ({ restaurantId }) => {
     );
 
     response.then(({ data }) => {
-      alert(`Order created with id=${data.id}`);
+      alert(`Order created with id=${ data.id }`);
       clearAllItems();
     });
   };
@@ -44,6 +46,22 @@ const RestaurantDetails = ({ restaurantId }) => {
   useEffect(() => {
     fetchRestaurant();
   }, [cart]);
+
+  const handleOpen = () => {
+    setModalStateDelete(true);
+  };
+
+  const handleClose = () => {
+    setModalStateDelete(false);
+  };
+  const deleteFood = (id) => {
+    console.log(id);
+    const response = axios.delete(
+      `http://localhost:8080/foods/${id}`,
+
+      { headers: { 'Content-Type': 'application/json' } }
+    );
+  };
 
   return (
     <Fragment>
@@ -60,12 +78,30 @@ const RestaurantDetails = ({ restaurantId }) => {
               <Text>{food.name}</Text>
               <Text>{food.price}</Text>
               <button class="ui grey button" onClick={() => addItem(food)}>Add to cart</button>
-              <Link to={`/restaurants/:restaurantId/update-food`}>
+
+              <Link to={`/restaurants/${food.id}/update-food`}>
                 <button class="ui grey button">Update food</button>
               </Link>
-              <Link to={`/restaurants/:restaurantId/delete-food`} >
-                <button class="ui grey button">Delete food</button>
-              </Link>
+
+            <Modal
+                trigger={<button className="ui grey button" onClick={handleOpen}>Delete food</button>}
+                open={modalStateDelete}
+                onClose={handleClose}
+                basic
+                size='small'
+              >
+                <Modal.Content>
+                  <h3>Are you sure you want to delete food {food.name}?</h3>
+                </Modal.Content>
+                <Modal.Actions>
+                  <Button color='red' onClick={() => deleteFood(food.id)} inverted>
+                    <Icon name='checkmark' /> Yes, sure
+                  </Button>
+                  <Button color='grey' onClick={handleClose} inverted>
+                    <Icon name='checkmark' /> No
+                  </Button>
+                </Modal.Actions>
+              </Modal>
             </Fragment>
           )
         })

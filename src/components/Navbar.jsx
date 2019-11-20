@@ -1,29 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-const Navbar = () => (
+
+const navbarLinks = [
+  { path: '/', name: 'Home' },
+  { path: '/restaurants', name: 'Restaurants' },
+  { path: '/contact', name: 'Contact' },
+  { path: '/add-restaurant', name: 'Add restaurant', isAdmin: true },
+  { path: '/log-in', name: 'Login' },
+  { path: '/sign-up', name: 'Sign Up' },
+  { path: '/users', name: 'Users' }
+];
+
+const createNavbarLinks = isAdmin => navbarLinks
+  .map(link => {
+    if (isAdmin || !link.isAdminPage) {
+      return <Link to={link.path}><li>{link.name}</li></Link>;
+    }
+    return null;
+  });
+
+const Navbar = ({ user = { isAdmin: false } }) => (
   <StyledWrapper>
-    <Link to="/">
-      <li>Home</li>
-    </Link>
-    <Link to="/restaurants">
-      <li>Restaurants</li>
-    </Link>
-    <Link to="/contact">
-      <li>Contact</li>
-    </Link>
-    <Link to="/add-restaurant">
-      <li>Add restaurant</li>
-    </Link>
-    <Link to="/add-food">
-      <li>Add food</li>
-    </Link>
-    <Link to="/log-in">
-      <li>Log In</li>
-    </Link>
-    <Link to="/sign-up">
-      <li>Sign up</li>
-    </Link>
+    {createNavbarLinks(user.isAdmin)}
   </StyledWrapper>
 )
 
