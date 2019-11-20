@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Form, Grid } from 'semantic-ui-react';
 
 
-const DeleteRestaurant = () => {
+const UpdateRestaurant = ({ restaurantId, navigate }) => {
   const [id, setId] = useState('');
   const [restaurant, setRestaurant] = useState({
     name: '',
@@ -16,12 +16,16 @@ const DeleteRestaurant = () => {
 
   const submit = (event) => {
     const response = axios.put(
-      `http://localhost:8080/restaurants/${id}`,
+      `http://localhost:8080/restaurants/${restaurantId}`,
       restaurant,
       { headers: { 'Content-Type': 'application/json' } }
     );
-    response.then(value => {
-      console.log(value.data);
+    response
+      .then(() => {
+        navigate('/restaurants');
+    })
+    .catch(err => {
+      alert('Error occurred: ${err.message}');
     });
     event.preventDefault();
   };
@@ -38,7 +42,6 @@ const DeleteRestaurant = () => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a restaurant info in database.</Text>
             <Form success>
-              <Form.Input type="text" name='id' onChange={event => setId(event.target.value)} placeholder="Id: " />
               <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
               <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
               <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
@@ -58,4 +61,4 @@ const StyledWrapper = styled.div`
   margin: 100px;
 `;
 
-export default DeleteRestaurant;
+export default UpdateRestaurant;

@@ -42,31 +42,26 @@ const Restaurants = () => {
           <Link to={`/restaurants/${id}`}>
             <button className="ui grey button">Check the menu</button>
           </Link>
-          <Link to={`/restaurants/update-restaurant`}>
+          <Link to={`/restaurants/${id}/update-restaurant`}>
             <button className="ui grey button">Update restaurant</button>
           </Link>
-          <Link to={`/restaurants/delete-restaurant`}>
-            <button className="ui grey button" >Delete restaurant</button>
-          </Link>
-
 
           <Modal
-            trigger={<Button onClick={handleOpen}>Delete restaurant</Button>}
+            trigger={<button className="ui grey button" onClick={handleOpen}>Delete restaurant</button>}
             open={modalState}
             onClose={handleClose}
             basic
             size='small'
           >
-            <Header icon='browser' content='Cookies policy' />
             <Modal.Content>
               <h3>Are you sure you want to delete restaurant {name}?</h3>
             </Modal.Content>
             <Modal.Actions>
-            <Button color='green' onClick={() => deleteRestaurant(id)} inverted>
-              <Icon name='checkmark' /> Yes, sure
+              <Button color='red' onClick={() => deleteRestaurant(id)} inverted>
+                <Icon name='checkmark' /> Yes, sure
             </Button>
-            <Button color='green' onClick={handleClose} inverted>
-              <Icon name='checkmark' /> No
+              <Button color='grey' onClick={handleClose} inverted>
+                <Icon name='checkmark' /> No
             </Button>
             </Modal.Actions>
           </Modal>
