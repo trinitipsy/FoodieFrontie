@@ -72,8 +72,6 @@ const Restaurants = () => {
           </Modal>
         </Grid.Column>
       </Grid>
-
-
     </StyledWrapper>
   ));
 }
