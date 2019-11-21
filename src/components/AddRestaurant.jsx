@@ -4,7 +4,7 @@ import { Form, Grid } from 'semantic-ui-react';
 import Text from './Text';
 import styled from 'styled-components';
 
-const AddRestaurant = () => {
+const AddRestaurant = ({ navigate }) => {
   const [restaurant, setRestaurant] = useState({
     name: '',
     email: '',
@@ -21,6 +21,7 @@ const AddRestaurant = () => {
 
     response.then(value => {
       console.log(value.data);
+      navigate('/restaurants');
     });
     event.preventDefault();
   };

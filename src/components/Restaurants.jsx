@@ -24,6 +24,7 @@ const Restaurants = ({ isAdmin = true }) => {
 
       { headers: { 'Content-Type': 'application/json' } }
     );
+    setModalStateDelete(false);
   };
 
 
@@ -47,7 +48,7 @@ const Restaurants = ({ isAdmin = true }) => {
             <button className="ui grey button">Check the menu</button>
           </Link>
           {isAdmin &&
-          <Link to={`/restaurants/${id}/update`}>
+          <Link to={`/restaurants/${id}/update-restaurant`}>
             <button className="ui grey button">Update restaurant</button>
           </Link>
           }

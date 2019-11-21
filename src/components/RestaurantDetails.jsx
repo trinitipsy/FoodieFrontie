@@ -61,6 +61,7 @@ const RestaurantDetails = ({ restaurantId }) => {
 
       { headers: { 'Content-Type': 'application/json' } }
     );
+    setModalStateDelete(false);
   };
 
   return (

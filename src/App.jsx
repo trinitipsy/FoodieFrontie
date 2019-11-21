@@ -16,6 +16,7 @@ import DeleteFood from './components/DeleteFood';
 import UpdateFood from './components/UpdateFood';
 import AddFood from './components/AddFood';
 import Users from './components/Users';
+import UpdateUser from './components/UpdateUser';
 
 const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 
@@ -32,11 +33,12 @@ const App = () => (
       <AddRestaurant path="/add-restaurant" />
       <NotFound default />
       <DeleteRestaurant path="/restaurants/delete-restaurant" />
-      <UpdateRestaurant path="/restaurants/update-restaurant" />
+      <UpdateRestaurant path="/restaurants/:restaurantId/update-restaurant" />
       <DeleteFood path="/restaurants/:restaurantId/delete-food" />
-      <UpdateFood path="/restaurants/:restaurantId/update-food" />
-      <AddFood path="/add-food" />
+      <UpdateFood path="/restaurants/:foodId/update-food" />
+      <AddFood path="/restaurants/:restaurantId/add-food" />
       <Users path="/users" />
+      <UpdateUser path="/users/:userId/update-user" />
     </Router>
     <Footer />
   </StyledWrapper>
