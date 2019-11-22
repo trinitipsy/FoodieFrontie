@@ -34,7 +34,7 @@ const App = () => (
       <NotFound default />
       <DeleteRestaurant path="/restaurants/:restaurantId/delete" />
       <UpdateRestaurant path="/restaurants/:restaurantId/update-restaurant" />
-      <DeleteFood path="/restaurants/:foodId/delete" />
+      <DeleteFood path="/restaurants/:foodId/delete-food" />
       <UpdateFood path="/restaurants/:foodId/update-food" />
       <AddFood path="/restaurants/:restaurantId/add-food" />
       <Users path="/users" />

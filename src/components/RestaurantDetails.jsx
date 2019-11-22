@@ -84,7 +84,7 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
                 <button class="ui grey button">Update food</button>
               </Link>
 
-              <Link to={`/restaurants/${food.id}/delete`}>
+              <Link to={`/restaurants/${food.id}/delete-food`}>
                 <button class="ui grey button">Delete food</button>
               </Link>
             </Fragment>
