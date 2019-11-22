@@ -6,7 +6,7 @@ const navbarLinks = [
   { path: '/', name: 'Home' },
   { path: '/restaurants', name: 'Restaurants' },
   { path: '/contact', name: 'Contact' },
-  { path: '/add-restaurant', name: 'Add restaurant', isAdmin: true },
+  { path: '/add-restaurant', name: 'Add restaurant', isAdminPage: true },
   { path: '/log-in', name: 'Login' },
   { path: '/sign-up', name: 'Sign Up' },
   { path: '/users', name: 'Users' }

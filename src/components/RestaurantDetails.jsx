@@ -4,7 +4,7 @@ import axios from 'axios';
 import Text from './Text';
 import { Link } from '@reach/router';
 
-const RestaurantDetails = ({ restaurantId }) => {
+const RestaurantDetails = ({ restaurantId, navigate }) => {
   const [restaurant, setRestaurant] = useState({});
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState({ foods: [] });
@@ -61,7 +61,7 @@ const RestaurantDetails = ({ restaurantId }) => {
 
       { headers: { 'Content-Type': 'application/json' } }
     );
-    setModalStateDelete(false);
+    navigate('/restaurants');
   };
 
   return (
