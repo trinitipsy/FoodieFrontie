@@ -2,33 +2,36 @@ import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import Text from './Text';
 import styled from 'styled-components';
-import { Form, Grid } from 'semantic-ui-react';
+import { Grid, Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
 
-
-const DeleteRestaurant = () => {
-  const [id, setId] = useState('');
+const DeleteRestaurant = ({ restaurantId, navigate }) => {
 
   const submit = (event) => {
     const response = axios.delete(
-      `http://localhost:8080/restaurants/${id}`,
+      `http://localhost:8080/restaurants/${restaurantId}`,
       { headers: { 'Content-Type': 'application/json' } }
     );
+    response
+      .then(() => {
+        navigate('/restaurants');
+      })
+      .catch(err => {
+        alert(`Error occurred: ${err.message}`);
+      });
     event.preventDefault();
   };
+  
+  const handleClose = () => {
+    navigate('/restaurants');
+  }
 
   return (
     <StyledWrapper class="ui form">
-      <form onSubmit={submit}>
-        <Grid centered columns={3}>
-          <Grid.Column>
-            <Text>Be careful! <br />You are about to delete a restaurant from database.</Text>
-            <Form success>
-              <Form.Input type="text" name='id' onChange={event => setId(event.target.value)} placeholder="Id: " />
-              <button className="ui grey button">Delete restaurant</button>
-            </Form>
-          </Grid.Column>
-        </Grid>
-      </form>
+      <Text>
+        Are you sure you want to delete restaurant from database?
+      </Text>
+      <button className="ui grey button" onClick={submit} >Delete!</button>
+      <button className="ui grey button" onClick={handleClose} >Cancel!</button>
     </StyledWrapper>
 
   )

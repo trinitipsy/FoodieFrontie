@@ -32,9 +32,9 @@ const App = () => (
       <SignUp path="/sign-up" />
       <AddRestaurant path="/add-restaurant" />
       <NotFound default />
-      <DeleteRestaurant path="/restaurants/delete-restaurant" />
+      <DeleteRestaurant path="/restaurants/:restaurantId/delete" />
       <UpdateRestaurant path="/restaurants/:restaurantId/update-restaurant" />
-      <DeleteFood path="/restaurants/:restaurantId/delete-food" />
+      <DeleteFood path="/restaurants/:foodId/delete" />
       <UpdateFood path="/restaurants/:foodId/update-food" />
       <AddFood path="/restaurants/:restaurantId/add-food" />
       <Users path="/users" />
