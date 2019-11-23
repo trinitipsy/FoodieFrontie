@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Form, Grid } from 'semantic-ui-react';
 
 
-const DeleteFood= ({ foodId, navigate }) => {
+const DeleteFood = ({ foodId, navigate }) => {
 
   const submit = (event) => {
     const response = axios.delete(

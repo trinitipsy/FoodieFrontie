@@ -18,9 +18,11 @@ const createNavbarLinks = isAdmin => navbarLinks
     }
     return null;
   });
-const isAdmin = AuthService.getRole();
+
+const isAdmin = AuthService.getRole() == 'ROLE_ADMIN';
+
 const Navbar = ({ user = { isAdmin } }) => {
-  
+
   return (
     <StyledWrapper>
       {createNavbarLinks(user.isAdmin)}

@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { Grid } from 'semantic-ui-react';
 import Text from './Text';
+import AuthService from '../service/AuthService';
 
-const Restaurants = ({ isAdmin = true, navigate }) => {
+const Restaurants = ({ navigate }) => {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
@@ -15,6 +16,8 @@ const Restaurants = ({ isAdmin = true, navigate }) => {
     }
     fetchRestaurants();
   }, []);
+
+  const isAdmin = AuthService.getRole() == 'ROLE_ADMIN';
 
   return restaurants.map(({ id, name, description, email }) => (
     <StyledWrapper>
@@ -32,12 +35,17 @@ const Restaurants = ({ isAdmin = true, navigate }) => {
               <button className="ui grey button">Update restaurant</button>
             </Link>
           }
-          <Link to={`/restaurants/${id}/add-food`}>
-            <button className="ui grey button">Add food</button>
-          </Link>
-          <Link to={`/restaurants/${id}/delete`}>
-            <button className="ui grey button">Delete restaurant</button>
-          </Link>
+          {isAdmin &&
+            <Link to={`/restaurants/${id}/add-food`}>
+              <button className="ui grey button">Add food</button>
+            </Link>
+          }
+          {isAdmin &&
+            <Link to={`/restaurants/${id}/delete`}>
+              <button className="ui grey button">Delete restaurant</button>
+            </Link>
+          }
+
         </Grid.Column>
       </Grid>
 
