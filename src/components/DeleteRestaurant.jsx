@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import Text from './Text';
 import styled from 'styled-components';
-import { Grid, Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
 
 const DeleteRestaurant = ({ restaurantId, navigate }) => {
 
@@ -20,7 +19,7 @@ const DeleteRestaurant = ({ restaurantId, navigate }) => {
       });
     event.preventDefault();
   };
-  
+
   const handleClose = () => {
     navigate('/restaurants');
   }

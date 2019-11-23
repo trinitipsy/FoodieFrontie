@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Text from './Text';
 import styled from 'styled-components';

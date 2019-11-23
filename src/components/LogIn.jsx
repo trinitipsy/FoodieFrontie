@@ -1,23 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Text from './Text';
 import { Form, Grid } from 'semantic-ui-react';
+import AuthService from '../service/AuthService';
+import axios from 'axios';
 
-const LogIn = () => (
-  <StyledWrapper class="ui form">
-    <Grid centered columns={3}>
-    <Grid.Column>
-        <Text>Welcome! <br />Please enter your name and password below.</Text>
-        <Form success>
-          <Form.Input placeholder='Name:' />
-          <Form.Input placeholder='Email: joe@schmoe.com' />
-          <button className="ui grey button">Log in</button>
-        </Form>
-      </Grid.Column>
-    </Grid>
-  </StyledWrapper>
+const LogIn = () => {
+  const [state, setState] = useState({
+    username: '',
+    password: '',
+    message: ''
+  });
 
-);
+  const handleChange = (event) => {
+    state[event.target.name] = event.target.value;
+    setState(state);
+  };
+
+  const submit = (event) => {
+    event.preventDefault();
+    const credentials = { username: state.username, password: state.password };
+    AuthService.login(credentials)
+      .then(res => {
+        if (res.status === 200) {
+          localStorage.setItem("userInfo", JSON.stringify(res.data));
+          axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
+        } else {
+          this.setState({ message: res.data.message });
+        }
+      });
+  };
+  return (
+    <StyledWrapper class="ui form">
+      <form onSubmit={submit}>
+        <Grid centered columns={3}>
+          <Grid.Column>
+            <Text>Welcome! <br />Please enter your mail and password below.</Text>
+            <Form success>
+              <Form.Input placeholder='Email:' type="text" name="username" onChange={handleChange} />
+              <Form.Input placeholder='Password:' type="text" name="password" onChange={handleChange} />
+              <button className="ui grey button">Log in</button>
+            </Form>
+          </Grid.Column>
+        </Grid>
+      </form>
+    </StyledWrapper>
+  )
+};
 
 const StyledWrapper = styled.div`
   padding: 60px;
@@ -25,3 +54,4 @@ const StyledWrapper = styled.div`
 `;
 
 export default LogIn;
+

@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
+import AuthService from '../service/AuthService';
 
 const navbarLinks = [
-  { path: '/', name: 'Home' },
+  { path: '/home', name: 'Home' },
   { path: '/restaurants', name: 'Restaurants' },
   { path: '/contact', name: 'Contact' },
   { path: '/add-restaurant', name: 'Add restaurant', isAdminPage: true },
-  { path: '/log-in', name: 'Login' },
-  { path: '/sign-up', name: 'Sign Up' },
-  { path: '/users', name: 'Users' }
+  { path: '/users', name: 'Users', isAdminPage: true }
 ];
 
 const createNavbarLinks = isAdmin => navbarLinks
@@ -19,12 +18,15 @@ const createNavbarLinks = isAdmin => navbarLinks
     }
     return null;
   });
-
-const Navbar = ({ user = { isAdmin: false } }) => (
-  <StyledWrapper>
-    {createNavbarLinks(user.isAdmin)}
-  </StyledWrapper>
-)
+const isAdmin = AuthService.getRole();
+const Navbar = ({ user = { isAdmin } }) => {
+  
+  return (
+    <StyledWrapper>
+      {createNavbarLinks(user.isAdmin)}
+    </StyledWrapper>
+  );
+}
 
 const StyledWrapper = styled.ul`
   list-style-type: none;

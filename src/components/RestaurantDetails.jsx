@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Grid, Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
 import axios from 'axios';
 import Text from './Text';
 import { Link } from '@reach/router';

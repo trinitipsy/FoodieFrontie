@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Grid, Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
+import { Grid, Button, Icon, Modal } from 'semantic-ui-react';
 import Text from './Text';
 
 const Users = () => {

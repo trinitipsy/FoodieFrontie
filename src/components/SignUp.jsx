@@ -26,7 +26,7 @@ const submit = (event) => {
   );
   response.then(value => {
     console.log(value.data);
-    navigate('/');
+    navigate('/home');
   });
   event.preventDefault();
 }
