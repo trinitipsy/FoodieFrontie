@@ -15,7 +15,7 @@ const UpdateUser = ({ userId, navigate }) => {
 
   const submit = event => {
     const response = axios.put(
-      `http://localhost:8080/users/${userId}`,
+      `http://localhost:8080/users`,
       user,
       { headers: { 'Content-Type': 'application/json' } }
     );

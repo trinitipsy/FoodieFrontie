@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
 import axios from "axios";
+import AuthService from '../service/AuthService';
 
 const SignUp = ({ navigate} ) => {
 const [user, setUser] = useState({
@@ -24,9 +25,14 @@ const submit = (event) => {
     user,
     { headers: { 'Content-Type': 'application/json' } }
   );
-  response.then(value => {
-    console.log(value.data);
-    navigate('/home');
+  response.then(res => {
+    if (res.status === 200) {
+      localStorage.setItem("userInfo", JSON.stringify(res.data));
+      axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
+      window.location.href="/home";
+    } else {
+      this.setState({ message: res.data.message });
+    }
   });
   event.preventDefault();
 }

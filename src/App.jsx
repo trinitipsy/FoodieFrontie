@@ -20,7 +20,7 @@ import UpdateUser from './components/UpdateUser';
 import axios from "axios";
 import AuthService from "./service/AuthService";
 import CheckIn from './components/CheckIn';
-
+import Settings from './components/Settings';
 const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 
 const App = () => {
@@ -49,7 +49,8 @@ const App = () => {
         <UpdateFood path="/restaurants/:foodId/update-food" />
         <AddFood path="/restaurants/:restaurantId/add-food" />
         <Users path="/users" />
-        <UpdateUser path="/users/:userId/update-user" />
+        <UpdateUser path="/users/update-user" />
+        <Settings path="/settings" />
       </Router>
       <Footer />
     </StyledWrapper>);

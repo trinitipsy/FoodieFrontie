@@ -32,7 +32,7 @@ export class AuthService {
 
   getRole() {
     const userInfo = this.getUserInfo();
-    if (!userInfo) {
+    if (!userInfo || !userInfo.token) {
       return null;
     }
 
