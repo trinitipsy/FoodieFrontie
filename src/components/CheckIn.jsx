@@ -2,22 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 import Text from './Text';
+import { Form, Grid, Button } from 'semantic-ui-react';
 
 const CheckIn = () => (
   <StyledWrapper>
     <Text>Welcome to FoodSetGo!</Text>
 
     <Link to={'/log-in'}>
-      <button class="ui grey button">Log in</button>
+      <Button inverted color='grey' size='massive'>Log in</Button>
     </Link>
 
     <Link to={'/sign-up'}>
-      <button class="ui grey button">Sign up</button>
+      <Button inverted color='grey' size='massive'>Sign up</Button>
     </Link>
   </StyledWrapper>
 )
 
 const StyledWrapper = styled.div`
+  height: 150%;
   margin: 0;
   margin-bottom: 50px;
   background-color: #11111;

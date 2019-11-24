@@ -26,9 +26,13 @@ const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 const App = () => {
   axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
 
+  const isLoggedIn = AuthService.getRole() != null;
+
   return (
     <StyledWrapper>
-      <Navbar />
+      {isLoggedIn &&
+        <Navbar />
+      }
       <Router>
         <CheckIn path="/" />
         <LandingPage path="/home" />

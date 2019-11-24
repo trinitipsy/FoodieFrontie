@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Text from './Text';
-import { Form, Grid } from 'semantic-ui-react';
+import { Form, Grid, Button } from 'semantic-ui-react';
 import AuthService from '../service/AuthService';
 import axios from 'axios';
 
-const LogIn = () => {
+const LogIn = ( { navigate } ) => {
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -25,6 +25,7 @@ const LogIn = () => {
         if (res.status === 200) {
           localStorage.setItem("userInfo", JSON.stringify(res.data));
           axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
+          window.location.href="/home";
         } else {
           this.setState({ message: res.data.message });
         }
@@ -39,7 +40,7 @@ const LogIn = () => {
             <Form success>
               <Form.Input placeholder='Email:' type="text" name="username" onChange={handleChange} />
               <Form.Input placeholder='Password:' type="text" name="password" onChange={handleChange} />
-              <button className="ui grey button">Log in</button>
+              <Button inverted color='grey' size='massive'>Log in</Button>
             </Form>
           </Grid.Column>
         </Grid>

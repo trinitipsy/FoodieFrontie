@@ -20,7 +20,6 @@ const createNavbarLinks = isAdmin => navbarLinks
   });
 
 const isAdmin = AuthService.getRole() == 'ROLE_ADMIN';
-
 const Navbar = ({ user = { isAdmin } }) => {
 
   return (
