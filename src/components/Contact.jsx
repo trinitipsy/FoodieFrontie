@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Form, Message, Grid } from 'semantic-ui-react';
+import { Form, Message, Grid,Button } from 'semantic-ui-react';
 import Text from './Text';
 
 const Footer = () => (
@@ -20,7 +20,7 @@ const Footer = () => (
         <Form success>
           <Form.Input placeholder='Email: joe@schmoe.com' />
           <Message visible content="Your message here..." />
-          <button className="ui grey button">Submit</button>
+          <Button inverted color='grey' size='massive'>Submit</Button>
         </Form>
       </Grid.Column>
     </Grid>

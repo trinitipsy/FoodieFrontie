@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Text from './Text';
 import styled from 'styled-components';
-import { Form, Grid } from 'semantic-ui-react';
+import { Form, Grid, Button } from 'semantic-ui-react';
 
 const UpdateUser = ({ userId, navigate }) => {
   const [user, setUser] = useState({
@@ -46,7 +46,7 @@ const UpdateUser = ({ userId, navigate }) => {
               <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
               <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
               <Form.Input type="text" name='password' onChange={handleChange} placeholder="Password: " />
-              <button className="ui grey button">Update user</button>
+              <Button inverted color='grey' size='massive'>Update user</Button>
             </Form>
           </Grid.Column>
         </Grid>

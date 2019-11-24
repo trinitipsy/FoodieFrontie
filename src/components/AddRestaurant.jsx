@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import { Form, Grid } from 'semantic-ui-react';
+import { Form, Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
 import styled from 'styled-components';
 
@@ -42,7 +42,7 @@ const AddRestaurant = ({ navigate }) => {
               <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
               <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
               <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
-              <button className="ui grey button">Add restaurant</button>
+              <Button inverted color='grey' size='massive'>Add restaurant</Button>
             </Form>
           </Grid.Column>
         </Grid>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
 import AuthService from '../service/AuthService';
 
@@ -28,21 +28,21 @@ const Restaurants = ({ navigate }) => {
           <Text>{email}</Text>
 
           <Link to={`/restaurants/${id}`}>
-            <button className="ui grey button">Check the menu</button>
+          <Button inverted color='grey' size='massive'>Check the menu</Button>
           </Link>
           {isAdmin &&
             <Link to={`/restaurants/${id}/update-restaurant`}>
-              <button className="ui grey button">Update restaurant</button>
+              <Button inverted color='grey' size='massive'>Update restaurant</Button>
             </Link>
           }
           {isAdmin &&
             <Link to={`/restaurants/${id}/add-food`}>
-              <button className="ui grey button">Add food</button>
+              <Button inverted color='grey' size='massive'>Add food</Button>
             </Link>
           }
           {isAdmin &&
             <Link to={`/restaurants/${id}/delete`}>
-              <button className="ui grey button">Delete restaurant</button>
+              <Button inverted color='grey' size='massive'>Delete restaurant</Button>
             </Link>
           }
 

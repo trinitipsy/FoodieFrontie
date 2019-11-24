@@ -2,12 +2,13 @@ import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import Text from './Text';
 import { Link } from '@reach/router';
+import AuthService from '../service/AuthService';
+import { Button } from 'semantic-ui-react';
 
 const RestaurantDetails = ({ restaurantId, navigate }) => {
   const [restaurant, setRestaurant] = useState({});
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState({ foods: [] });
-  const [modalStateDelete, setModalStateDelete] = useState('');
 
   const addItem = (food) => {
     cart.foods.push(food);
@@ -46,22 +47,7 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
     fetchRestaurant();
   }, [cart]);
 
-  const handleOpen = () => {
-    setModalStateDelete(true);
-  };
-
-  const handleClose = () => {
-    setModalStateDelete(false);
-  };
-  const deleteFood = (id) => {
-    console.log(id);
-    const response = axios.delete(
-      `http://localhost:8080/foods/${id}`,
-
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-    navigate('/restaurants');
-  };
+  const isAdmin = AuthService.getRole() == 'ROLE_ADMIN';
 
   return (
     <Fragment>
@@ -77,15 +63,19 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
             <Fragment key={`restoran-${index}`}>
               <Text>{food.name}</Text>
               <Text>{food.price}</Text>
-              <button class="ui grey button" onClick={() => addItem(food)}>Add to cart</button>
+              <Button inverted color='grey' size='massive' onClick={() => addItem(food)} >Add to cart</Button>
 
-              <Link to={`/restaurants/${food.id}/update-food`}>
-                <button class="ui grey button">Update food</button>
-              </Link>
+              {isAdmin &&
+                <Link to={`/restaurants/${food.id}/update-food`}>
+                  <Button inverted color='grey' size='massive'>Update food</Button>
+                </Link>
+              }
 
-              <Link to={`/restaurants/${food.id}/delete-food`}>
-                <button class="ui grey button">Delete food</button>
-              </Link>
+              {isAdmin &&
+                <Link to={`/restaurants/${food.id}/delete-food`}>
+                  <Button inverted color='grey' size='massive'>Delete food</Button>
+                </Link>
+              }
             </Fragment>
           )
         })
@@ -99,12 +89,12 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
         cart.foods.map((food, index) => {
           return (
             <Fragment key={`order-${index}`}>
-              <h2>{food.name} | {food.price}</h2>
+              <Text>{food.name} | {food.price}</Text>
             </Fragment>
           )
         })
       }
-      <button onClick={() => createOrder()}>Submit Order</button>
+      <Button inverted color='grey' size='massive' onClick={() => createOrder()} >Submit order</Button>
 
     </Fragment>
   )

@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import Text from './Text';
 import styled from 'styled-components';
+import { Button } from 'semantic-ui-react';
 
 const DeleteRestaurant = ({ restaurantId, navigate }) => {
 
@@ -29,8 +30,8 @@ const DeleteRestaurant = ({ restaurantId, navigate }) => {
       <Text>
         Are you sure you want to delete restaurant from database?
       </Text>
-      <button className="ui grey button" onClick={submit} >Delete!</button>
-      <button className="ui grey button" onClick={handleClose} >Cancel!</button>
+      <Button inverted color='grey' size='massive' onClick={submit}>Delete</Button>
+      <Button inverted color='grey' size='massive' nClick={handleClose} >Cancel</Button>
     </StyledWrapper>
 
   )

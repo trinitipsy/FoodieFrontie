@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Form, Grid } from 'semantic-ui-react';
+import { Form, Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
 import axios from "axios";
 
@@ -43,7 +43,7 @@ return (
           <Form.Input type="text" name='address' onChange={handleChange} placeholder='Address: ' />
           <Form.Input type="text" name='email' onChange={handleChange} placeholder='Email: example@gmail.come ' />
           <Form.Input type="text" name='password' onChange={handleChange} placeholder='Password: ' />
-          <button className="ui grey button">Sign up</button>
+          <Button inverted color='grey' size='massive'>Sign up</Button>
         </Form>
       </Grid.Column>
     </Grid>
