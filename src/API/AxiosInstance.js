@@ -1,13 +1,12 @@
 import axios from 'axios';
 import AuthService from '../service/AuthService';
 
-const getBaseUrl = () => {
-  if (process.env.NODE_ENV === 'development') return 'http://localhost:8080/';
-  //default build = ""
+const hosts = {
+  development: 'http://localhost:8080/'
 };
 
 const axiosInstance = axios.create({
-    baseURL: getBaseUrl()
+    baseURL: hosts[process.env.NODE_ENV]
 });
 
 
