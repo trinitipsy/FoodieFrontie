@@ -1,11 +1,12 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../API/AxiosInstance';
 import Text from './Text';
 import { Link } from '@reach/router';
 import AuthService from '../service/AuthService';
 import { Button } from 'semantic-ui-react';
+import styled from 'styled-components';
 
-const RestaurantDetails = ({ restaurantId, navigate }) => {
+const RestaurantDetails = ({ restaurantId }) => {
   const [restaurant, setRestaurant] = useState({});
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState({ foods: [] });
@@ -26,7 +27,7 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
     };
 
     const response = axios.post(
-      'http://localhost:8080/orders',
+      'orders',
       order,
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -38,7 +39,7 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
   };
 
   const fetchRestaurant = async () => {
-    const { data } = await axios(`http://localhost:8080/restaurants/${restaurantId}`);
+    const { data } = await axios(`restaurants/${restaurantId}`);
     setRestaurant(data);
     setMenu(data.menu);
   };
@@ -50,7 +51,7 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
   const isAdmin = AuthService.getRole() == 'ROLE_ADMIN';
 
   return (
-    <Fragment>
+    <StyledWrapper>
       <Text fontSize={48}>{restaurant.name}</Text>
       <Text>{restaurant.description}</Text>
 
@@ -63,28 +64,29 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
             <Fragment key={`restoran-${index}`}>
               <Text>{food.name}</Text>
               <Text>{food.price}</Text>
-              <Button inverted color='grey' size='massive' onClick={() => addItem(food)} >Add to cart</Button>
-
+              {!isAdmin &&
+                <Button inverted color='black' size='big' onClick={() => addItem(food)} >Add to cart</Button>
+              }
               {isAdmin &&
                 <Link to={`/restaurants/${food.id}/update-food`}>
-                  <Button inverted color='grey' size='massive'>Update food</Button>
+                  <Button inverted color='black' size='big'>Update food</Button>
                 </Link>
               }
 
               {isAdmin &&
                 <Link to={`/restaurants/${food.id}/delete-food`}>
-                  <Button inverted color='grey' size='massive'>Delete food</Button>
+                  <Button inverted color='black' size='big'>Delete food</Button>
                 </Link>
               }
             </Fragment>
           )
         })
       }
-
-      <Text>
-        ================================== CART ==================================
+      {!isAdmin &&
+        <Text>
+          ================================== CART ==================================
             </Text>
-
+      }
       {
         cart.foods.map((food, index) => {
           return (
@@ -94,10 +96,21 @@ const RestaurantDetails = ({ restaurantId, navigate }) => {
           )
         })
       }
-      <Button inverted color='grey' size='massive' onClick={() => createOrder()} >Submit order</Button>
-
-    </Fragment>
+      {!isAdmin &&
+        <Button inverted color='black' size='big' onClick={() => createOrder()} >Submit order</Button>
+      }
+    </StyledWrapper>
   )
 };
+
+const StyledWrapper = styled.div`
+  background-color: #11111;
+  padding: 50px;
+  text-align: center;
+  background-image: url('greeting.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  `;
+
 
 export default RestaurantDetails;

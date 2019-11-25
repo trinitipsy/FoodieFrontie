@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
-import axios from 'axios';
+import axios from '../API/AxiosInstance';
 import { Grid, Button, Icon, Modal } from 'semantic-ui-react';
 import Text from './Text';
 
@@ -11,7 +11,7 @@ const Users = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data } = await axios('http://localhost:8080/users');
+      const { data } = await axios('users');
       setUsers(data);
     }
     fetchUsers();

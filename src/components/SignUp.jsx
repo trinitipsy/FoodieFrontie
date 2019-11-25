@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
-import axios from "axios";
+import axios from "../API/AxiosInstance";
 import AuthService from '../service/AuthService';
 
 const SignUp = () => {
@@ -21,7 +21,7 @@ const SignUp = () => {
 
   const submit = (event) => {
     const response = axios.post(
-      'http://localhost:8080/users',
+      'users',
       user,
       { headers: { 'Content-Type': 'application/json' } }
     );

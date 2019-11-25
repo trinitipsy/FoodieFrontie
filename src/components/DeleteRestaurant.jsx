@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../API/AxiosInstance';
 import Text from './Text';
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react';
@@ -8,7 +8,7 @@ const DeleteRestaurant = ({ restaurantId, navigate }) => {
 
   const submit = (event) => {
     const response = axios.delete(
-      `http://localhost:8080/restaurants/${restaurantId}`,
+      `restaurants/${restaurantId}`,
       { headers: { 'Content-Type': 'application/json' } }
     );
     response

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { Modal, Icon, Button, Grid } from 'semantic-ui-react';
 import { Link } from '@reach/router';
-import axios from 'axios';
+import axios from '../API/AxiosInstance';
 import styled from 'styled-components';
 import Text from './Text';
 import AuthService from '../service/AuthService';
@@ -27,7 +27,7 @@ const Settings = () => {
 
   const deleteUser = () => {
     const response = axios.delete(
-      'http://localhost:8080/users',
+      'users',
 
       { headers: { 'Content-Type': 'application/json' } }
     );

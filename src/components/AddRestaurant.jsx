@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from "axios";
+import axios from "../API/AxiosInstance";
 import { Form, Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
 import styled from 'styled-components';
@@ -14,7 +14,7 @@ const AddRestaurant = ({ navigate }) => {
 
   const submit = (event) => {
     const response = axios.post(
-      'http://localhost:8080/restaurants/',
+      'restaurants',
       restaurant,
       { headers: { 'Content-Type': 'application/json' } }
     );

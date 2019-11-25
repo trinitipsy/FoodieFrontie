@@ -25,7 +25,7 @@ import Settings from './components/Settings';
 const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 
 const App = () => {
-  axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
+  //axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
 
   const isLoggedIn = AuthService.getRole() != null;
 

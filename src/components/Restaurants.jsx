@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
-import axios from 'axios';
+import axios from '../API/AxiosInstance';
 import { Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
 import AuthService from '../service/AuthService';
@@ -11,7 +11,7 @@ const Restaurants = ({ navigate }) => {
 
   useEffect(() => {
     const fetchRestaurants = async () => {
-      const { data } = await axios('http://localhost:8080/restaurants');
+      const { data } = await axios('restaurants');
       setRestaurants(data);
     }
     fetchRestaurants();

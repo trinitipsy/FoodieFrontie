@@ -24,7 +24,7 @@ const LogIn = ( { navigate } ) => {
       .then(res => {
         if (res.status === 200) {
           localStorage.setItem("userInfo", JSON.stringify(res.data));
-          axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
+          //axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
           window.location.href="/home";
         } else {
           this.setState({ message: res.data.message });
