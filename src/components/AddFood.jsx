@@ -51,8 +51,12 @@ const AddFood = ({ restaurantId, navigate }) => {
 };
 
 const StyledWrapper = styled.div`
-  padding: 60px;
-  margin: 100px;
+  background-color: #11111;
+  padding: 50px;
+  text-align: center;
+  background-image: url('greeting.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export default AddFood;

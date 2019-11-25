@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Modal, Icon, Button, Grid } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import axios from 'axios';
+import styled from 'styled-components';
 
 const Settings = () => {
   const [modalStateDelete, setModalStateDelete] = useState('');
@@ -21,7 +22,7 @@ const Settings = () => {
     window.location.href='/';
   };
   return (
-    <Grid centered columns={2}>
+    <StyledWrapper centered columns={2}>
       <Grid.Row>
       <Link to={'/users/update-user'}>
         <Button inverted color='grey' size='massive'>Update account</Button>
@@ -48,7 +49,7 @@ const Settings = () => {
         </Modal.Actions>
       </Modal>
       </Grid.Row>
-    </Grid>
+    </StyledWrapper>
   )
   {/* <Link to={'/users/delete-user'}>
       <Button inverted color='grey' size='massive'>Delete account</Button>
@@ -57,5 +58,14 @@ const Settings = () => {
       <Button inverted color='grey' size='massive'>Log out</Button>
     </Link> */}
 }
+
+const StyledWrapper = styled.div`
+  background-color: #11111;
+  padding: 50px;
+  text-align: center;
+  background-image: url('greeting.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
 
 export default Settings;

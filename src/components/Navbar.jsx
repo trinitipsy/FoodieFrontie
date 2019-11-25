@@ -6,10 +6,10 @@ import AuthService from '../service/AuthService';
 const navbarLinks = [
   { path: '/home', name: 'Home' },
   { path: '/restaurants', name: 'Restaurants' },
-  { path: '/contact', name: 'Contact' },
-  { path: '/settings', name: 'Settings'},
   { path: '/add-restaurant', name: 'Add restaurant', isAdminPage: true },
-  { path: '/users', name: 'Users', isAdminPage: true }
+  { path: '/users', name: 'Users', isAdminPage: true },
+  { path: '/contact', name: 'Contact' },
+  { path: '/settings', name: 'Settings'}
 ];
 
 const createNavbarLinks = isAdmin => navbarLinks
