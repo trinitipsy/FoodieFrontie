@@ -45,7 +45,7 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
               <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
               <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
               <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
-              <Button inverted color='grey' size='massive'>Update restaurant</Button>
+              <Button inverted color='black' size='big'>Update restaurant</Button>
             </Form>
           </Grid.Column>
         </Grid>

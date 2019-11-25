@@ -30,16 +30,20 @@ const DeleteRestaurant = ({ restaurantId, navigate }) => {
       <Text>
         Are you sure you want to delete restaurant from database?
       </Text>
-      <Button inverted color='grey' size='massive' onClick={submit}>Delete</Button>
-      <Button inverted color='grey' size='massive' nClick={handleClose} >Cancel</Button>
+      <Button inverted color='black' size='big' onClick={submit}>Delete</Button>
+      <Button inverted color='black' size='big' nClick={handleClose} >Cancel</Button>
     </StyledWrapper>
 
   )
 };
 
 const StyledWrapper = styled.div`
-  padding: 60px;
-  margin: 100px;
+  background-color: #11111;
+  padding: 50px;
+  text-align: center;
+  background-image: url('sparkle.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export default DeleteRestaurant;

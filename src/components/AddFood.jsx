@@ -41,7 +41,7 @@ const AddFood = ({ restaurantId, navigate }) => {
               <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
               <Form.Input type="text" name='price' onChange={handleChange} placeholder="Price: " />
               <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
-              <Button inverted color='grey' size='massive'>Add food</Button>
+              <Button inverted color='black' size='big'>Add food</Button>
             </Form>
           </Grid.Column>
         </Grid>
