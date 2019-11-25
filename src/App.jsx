@@ -21,6 +21,7 @@ import axios from "axios";
 import AuthService from "./service/AuthService";
 import CheckIn from './components/CheckIn';
 import Settings from './components/Settings';
+
 const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 
 const App = () => {

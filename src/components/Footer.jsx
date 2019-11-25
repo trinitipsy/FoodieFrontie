@@ -31,7 +31,8 @@ const Footer = () => (
 )
 
 const StyledWrraper = styled.div`
-  padding: 160px;
+  padding: 100px;
+  padding-bottom:20px;
   .copyright{
     margin-top: 80px;
     padding-bottom: 0px;

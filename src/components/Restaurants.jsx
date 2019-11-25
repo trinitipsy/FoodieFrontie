@@ -26,26 +26,26 @@ const Restaurants = ({ navigate }) => {
           <Text fontSize={48}>{name}</Text>
           <Text>{description}</Text>
           <Text>{email}</Text>
-
-          <Link to={`/restaurants/${id}`}>
-          <Button inverted color='grey' size='massive'>Check the menu</Button>
-          </Link>
-          {isAdmin &&
-            <Link to={`/restaurants/${id}/update-restaurant`}>
-              <Button inverted color='grey' size='massive'>Update restaurant</Button>
+          <Button.Group vertical>
+            <Link to={`/restaurants/${id}`}>
+              <Button inverted color='black' size='big'>Check the menu</Button>
             </Link>
-          }
-          {isAdmin &&
-            <Link to={`/restaurants/${id}/add-food`}>
-              <Button inverted color='grey' size='massive'>Add food</Button>
-            </Link>
-          }
-          {isAdmin &&
-            <Link to={`/restaurants/${id}/delete`}>
-              <Button inverted color='grey' size='massive'>Delete restaurant</Button>
-            </Link>
-          }
-
+            {isAdmin &&
+              <Link to={`/restaurants/${id}/update-restaurant`}>
+                <Button inverted color='black' size='big'>Update restaurant</Button>
+              </Link>
+            }
+            {isAdmin &&
+              <Link to={`/restaurants/${id}/add-food`}>
+                <Button inverted color='black' size='big'>Add food</Button>
+              </Link>
+            }
+            {isAdmin &&
+              <Link to={`/restaurants/${id}/delete`}>
+                <Button inverted color='black' size='big'>Delete restaurant</Button>
+              </Link>
+            }
+          </Button.Group>
         </Grid.Column>
       </Grid>
 
@@ -56,7 +56,7 @@ const Restaurants = ({ navigate }) => {
 
 
 const StyledWrapper = styled.div`
-  background-image: url("https://image.freepik.com/free-photo/dark-texture-chalk-board-black-board_28629-1027.jpg");
+  background-image: url("sparkle.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding: 80px;

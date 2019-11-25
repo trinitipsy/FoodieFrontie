@@ -20,16 +20,17 @@ const Footer = () => (
         <Form success>
           <Form.Input placeholder='Email: joe@schmoe.com' />
           <Message visible content="Your message here..." />
-          <Button inverted color='grey' size='massive'>Submit</Button>
+          <Button inverted color='black' size='big'>Submit</Button>
         </Form>
       </Grid.Column>
     </Grid>
   </StyledWrapper>
 )
 const StyledWrapper = styled.div`
-  padding: 60px;
-  height: 70%;
-  margin: 100px;
-`;
+  background-image: url("sparkle.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 80px;
+  `;
 
 export default Footer;

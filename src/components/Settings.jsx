@@ -38,18 +38,16 @@ const Settings = () => {
     AuthService.logOut();
     window.location.href = '/';
   };
-  
+
   return (
     <StyledWrapper centered columns={2}>
-      <Grid.Row>
+      <Button.Group vertical>
+     
         <Link to={'/users/update-user'}>
-          <Button inverted color='grey' size='massive'>Update account</Button>
+          <Button inverted color='black' size='massive'>Update account</Button>
         </Link>
-      </Grid.Row>
-
-      <Grid.Row>
         <Modal
-          trigger={<Button inverted color='grey' size='massive' onClick={handleOpen} >Delete account</Button>}
+          trigger={<Button inverted color='black' size='massive' onClick={handleOpen} >Delete account</Button>}
           open={modalStateDelete}
           onClose={handleClose}
           basic
@@ -62,16 +60,13 @@ const Settings = () => {
             <Button color='red' onClick={() => deleteUser()} inverted>
               <Icon name='checkmark' /> Yes, sure
                   </Button>
-            <Button color='grey' onClick={handleClose} inverted>
+            <Button color='black' onClick={handleClose} inverted>
               <Icon name='checkmark' /> No
                   </Button>
           </Modal.Actions>
         </Modal>
-      </Grid.Row>
-
-      <Grid.Row>
         <Modal
-          trigger={<Button inverted color='grey' size='massive' onClick={handleOpenLogout} >Log out</Button>}
+          trigger={<Button inverted color='black' size='massive' onClick={handleOpenLogout} >Log out</Button>}
           open={modalStateLogout}
           onClose={handleCloseLogout}
           basic
@@ -84,20 +79,14 @@ const Settings = () => {
             <Button color='red' onClick={() => logOut()} inverted>
               <Icon name='checkmark' /> Yes, sure
                   </Button>
-            <Button color='grey' onClick={handleCloseLogout} inverted>
+            <Button color='black' onClick={handleCloseLogout} inverted>
               <Icon name='checkmark' /> No
                   </Button>
           </Modal.Actions>
         </Modal>
-      </Grid.Row>
+      </Button.Group>
     </StyledWrapper>
   )
-  {/* <Link to={'/users/delete-user'}>
-      <Button inverted color='grey' size='massive'>Delete account</Button>
-    </Link>
-    <Link to={`/users/${id}/update-user`}>
-      <Button inverted color='grey' size='massive'>Log out</Button>
-    </Link> */}
 }
 
 const StyledWrapper = styled.div`

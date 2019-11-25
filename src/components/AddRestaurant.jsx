@@ -42,7 +42,7 @@ const AddRestaurant = ({ navigate }) => {
               <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
               <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
               <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
-              <Button inverted color='grey' size='massive'>Add restaurant</Button>
+              <Button inverted color='black' size='big'>Add restaurant</Button>
             </Form>
           </Grid.Column>
         </Grid>

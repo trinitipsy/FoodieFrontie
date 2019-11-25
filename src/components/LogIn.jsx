@@ -40,7 +40,7 @@ const LogIn = ( { navigate } ) => {
             <Form success>
               <Form.Input placeholder='Email:' type="text" name="username" onChange={handleChange} />
               <Form.Input placeholder='Password:' type="text" name="password" onChange={handleChange} />
-              <Button inverted color='grey' size='massive'>Log in</Button>
+              <Button inverted color='black' size='massive'>Log in</Button>
             </Form>
           </Grid.Column>
         </Grid>

@@ -49,7 +49,7 @@ const SignUp = () => {
               <Form.Input type="text" name='address' onChange={handleChange} placeholder='Address: ' />
               <Form.Input type="text" name='email' onChange={handleChange} placeholder='Email: example@gmail.come ' />
               <Form.Input type="text" name='password' onChange={handleChange} placeholder='Password: ' />
-              <Button inverted color='grey' size='massive'>Sign up</Button>
+              <Button inverted color='black' size='massive'>Sign up</Button>
             </Form>
           </Grid.Column>
         </Grid>

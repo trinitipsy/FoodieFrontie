@@ -6,20 +6,19 @@ import { Form, Grid, Button } from 'semantic-ui-react';
 
 const CheckIn = () => (
   <StyledWrapper>
-    <Text>Welcome to FoodSetGo!</Text>
+    <Text fontSize={48}>Welcome to FoodSetGo!</Text>
 
     <Link to={'/log-in'}>
-      <Button inverted color='grey' size='massive'>Log in</Button>
+      <Button inverted color='black' size='massive'>Log in</Button>
     </Link>
-
     <Link to={'/sign-up'}>
-      <Button inverted color='grey' size='massive'>Sign up</Button>
+      <Button inverted color='black' size='massive'>Sign up</Button>
     </Link>
   </StyledWrapper>
 )
 
 const StyledWrapper = styled.div`
-  height: 150%;
+  height: 350px;
   margin: 0;
   margin-bottom: 50px;
   background-color: #11111;
