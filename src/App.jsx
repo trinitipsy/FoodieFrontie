@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Router } from '@reach/router';
+import { Redirect, Router } from '@reach/router';
 import Navbar from './components/Navbar'
 import Contact from './components/Contact';
 import LandingPage from './components/LandingPage';
@@ -20,8 +20,22 @@ import UpdateUser from './components/UpdateUser';
 import AuthService from "./service/AuthService";
 import CheckIn from './components/CheckIn';
 import Settings from './components/Settings';
+import Text from './components/Text';
 
-const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
+const NotFound = () => <div><Text>404 - Page Not Found</Text></div>;
+
+const redirectCheckIn = <Redirect from="" to="/" noThrow />;
+
+const UserRoute = ({ component: Component, ...rest }) => (
+  AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
+);
+const AdminRoute = ({ component: Component, ...rest }) => (
+  AuthService.isAdmin() ? <Component {...rest} /> : redirectCheckIn
+);
+const ProtectedRoute = ({ component: Component, ...rest }) => (
+  AuthService.isAdmin() || AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
+);
+
 
 const App = () => {
 
@@ -34,24 +48,26 @@ const App = () => {
       }
       <Router>
         <CheckIn path="/" />
-        <LandingPage path="/home" />
-        <Restaurants path="/restaurants" />
-        <RestaurantDetails path="/restaurants/:restaurantId/menu" />
-        <Contact path="/contact" />
+        <UserRoute path="/home" component={LandingPage} />
+        <ProtectedRoute path="/restaurants" component={Restaurants} />
+        <ProtectedRoute path="/restaurants/:restaurantId/menu" component={RestaurantDetails} />
+        <ProtectedRoute path="/contact" component={Contact} />
         <LogIn path="/log-in" />
         <SignUp path="/sign-up" />
-        <AddRestaurant path="restaurants/add" />
+        <AdminRoute path="restaurants/add" component={AddRestaurant} />
         <NotFound default />
-        <DeleteRestaurant path="/restaurants/:restaurantId/delete" />
-        <UpdateRestaurant path="/restaurants/:restaurantId/update" />
-        <DeleteFood path="/food/:foodId/delete" />
-        <UpdateFood path="/food/:foodId/update" />
-        <AddFood path="/restaurants/:restaurantId/add-food" />
-        <Users path="/users" />
-        <UpdateUser path="/users/update" />
-        <Settings path="/settings" />
+        <AdminRoute path="/restaurants/:restaurantId/delete" component={DeleteRestaurant} />
+        <AdminRoute path="/restaurants/:restaurantId/update" component={UpdateRestaurant} />
+        <AdminRoute path="/food/:foodId/delete" component={DeleteFood} />
+        <AdminRoute path="/food/:foodId/update" component={UpdateFood} />
+        <AdminRoute path="/restaurants/:restaurantId/add-food" component={AddFood} />
+        <AdminRoute path="/users" component={Users} />
+        <AdminRoute path="/users/update" component={UpdateUser} />
+        <ProtectedRoute path="/settings" component={Settings} />
       </Router>
-      <Footer />
+      {isLoggedIn &&
+        <Footer />
+      }
     </StyledWrapper>);
 };
 

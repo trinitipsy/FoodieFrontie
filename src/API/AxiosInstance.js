@@ -1,8 +1,10 @@
+import React from 'react';
 import axios from 'axios';
 import AuthService from '../service/AuthService';
+import Text from '../components/Text';
 
 const hosts = {
-  development: 'http://localhost:8080/'
+    development: 'http://localhost:8080/'
 };
 
 const axiosInstance = axios.create({
@@ -11,30 +13,34 @@ const axiosInstance = axios.create({
 
 
 const isHandlerEnabled = (config = {}) => {
-    return config.hasOwnProperty('handlerEnabled') && !config.handlerEnabled ? false: true
+    return config.hasOwnProperty('handlerEnabled') && !config.handlerEnabled ? false : true
 };
-
-// const requestHandler = (request) => {
-//     if(isHandlerEnabled(request)) {
-//         request.headers.
-//     }
-// }
-// }
-
-
 
 const requestHandler = (request) => {
     if (isHandlerEnabled(request)) {
-        console.log( AuthService.getUserInfo());
+        console.log(AuthService.getUserInfo());
 
-      request.headers['Authorization'] = AuthService.getAuthorization();
+        request.headers['Authorization'] = AuthService.getAuthorization();
 
     }
     return request
-  }
+};
 
-  axiosInstance.interceptors.request.use(
+const errorHandler = (error) => {
+    if (isHandlerEnabled(error.config)) {
+        if (error.response && error.response.data) {
+            //alert(error.response.data.message);
+            return (
+                <Text>{error.response.data.message}</Text>
+            )
+        }
+    }
+    return Promise.reject({ ...error })
+};
+
+axiosInstance.interceptors.request.use(
     request => requestHandler(request)
-  )
+);
+axiosInstance.interceptors.response.use(response => response, error => errorHandler(error));
 
 export default axiosInstance;

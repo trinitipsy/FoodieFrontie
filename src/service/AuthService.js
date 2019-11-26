@@ -46,6 +46,14 @@ export class AuthService {
     }
   }
 
+  isUser() {
+    return this.getRole() == 'ROLE_USER';
+  }
+
+  isAdmin() {
+    return this.getRole() == 'ROLE_ADMIN';
+  }
+
 }
 
 export default new AuthService();
