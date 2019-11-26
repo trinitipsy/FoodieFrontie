@@ -17,7 +17,6 @@ import UpdateFood from './components/UpdateFood';
 import AddFood from './components/AddFood';
 import Users from './components/Users';
 import UpdateUser from './components/UpdateUser';
-import axios from "axios";
 import AuthService from "./service/AuthService";
 import CheckIn from './components/CheckIn';
 import Settings from './components/Settings';
@@ -25,7 +24,6 @@ import Settings from './components/Settings';
 const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
 
 const App = () => {
-  //axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
 
   const isLoggedIn = AuthService.getRole() != null;
 
@@ -42,7 +40,7 @@ const App = () => {
         <Contact path="/contact" />
         <LogIn path="/log-in" />
         <SignUp path="/sign-up" />
-        <AddRestaurant path="/add-restaurant" />
+        <AddRestaurant path="restaurants/add" />
         <NotFound default />
         <DeleteRestaurant path="/restaurants/:restaurantId/delete" />
         <UpdateRestaurant path="/restaurants/:restaurantId/update-restaurant" />
