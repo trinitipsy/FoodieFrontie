@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from '../API/AxiosInstance';
 import Text from './Text';
 import styled from 'styled-components';
@@ -33,6 +33,14 @@ const UpdateFood = ({ foodId, navigate }) => {
     setFood(food);
   };
 
+  useEffect(() => {
+    const fetchFood = async () => {
+      const { data } = await axios(`foods/${foodId}`);
+      setFood(data);
+    }
+    fetchFood();
+  }, []);
+
   return (
     <StyledWrapper class="ui form">
       <form onSubmit={submit}>
@@ -40,9 +48,9 @@ const UpdateFood = ({ foodId, navigate }) => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a food in database.</Text>
             <Form success>
-              <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
-              <Form.Input type="text" name='price' onChange={handleChange} placeholder="Price: " />
-              <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
+              <Form.Input type="text" name='name' onChange={handleChange} placeholder={food.name} />
+              <Form.Input type="text" name='price' onChange={handleChange} placeholder={food.price} />
+              <Form.Input type="text" name='description' onChange={handleChange} placeholder={food.description} />
               <Button inverted color='grey' size='massive'>Update food</Button>
             </Form>
           </Grid.Column>

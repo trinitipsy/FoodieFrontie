@@ -64,6 +64,7 @@ const RestaurantDetails = ({ restaurantId }) => {
           return (
             <Fragment key={`restoran-${index}`}>
               <Text>{food.name}</Text>
+              <Text>{food.description}</Text>
               <Text>{food.price}</Text>
               {!isAdmin &&
                 <Button inverted color='black' size='big' onClick={() => addItem(food)} >Add to cart</Button>
@@ -98,9 +99,9 @@ const RestaurantDetails = ({ restaurantId }) => {
         })
       }
       {!isAdmin &&
-        
-          <Button inverted color='black' size='big' onClick={() => createOrder()} >Submit order</Button>
-      
+
+        <Button inverted color='black' size='big' onClick={() => createOrder()} >Submit order</Button>
+
       }
     </StyledWrapper>
   )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from '../API/AxiosInstance';
 import Text from './Text';
 import styled from 'styled-components';
@@ -12,6 +12,14 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
     address: '',
     description: ''
   });
+
+  useEffect(() => {
+    const fetchRestaurant = async () => {
+      const { data } = await axios(`restaurants/${restaurantId}`);
+      setRestaurant(data);
+    }
+    fetchRestaurant();
+  }, []);
 
   const submit = (event) => {
     const response = axios.put(
@@ -30,6 +38,7 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
   };
 
   const handleChange = (event) => {
+    
     restaurant[event.target.name] = event.target.value;
     setRestaurant(restaurant);
   };
@@ -41,10 +50,10 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a restaurant info in database.</Text>
             <Form success>
-              <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
-              <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
-              <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
-              <Form.Input type="text" name='description' onChange={handleChange} placeholder="Description: " />
+              <Form.Input type="text" name='name' onChange={handleChange} placeholder={restaurant.name} />
+              <Form.Input type="text" name='email' onChange={handleChange} placeholder={restaurant.email} />
+              <Form.Input type="text" name='address' onChange={handleChange} placeholder={restaurant.address} />
+              <Form.Input type="text" name='description' onChange={handleChange} placeholder={restaurant.description} />
               <Button inverted color='black' size='big'>Update restaurant</Button>
             </Form>
           </Grid.Column>

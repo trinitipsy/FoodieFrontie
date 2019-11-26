@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from '../API/AxiosInstance';
 import Text from './Text';
 import styled from 'styled-components';
@@ -34,6 +34,14 @@ const UpdateUser = ({ userId, navigate }) => {
     setUser(user);
   };
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data } = await axios('users/get');
+      setUser(data);
+    }
+    fetchUser();
+  }, []);
+
   return (
     <StyledWrapper class="ui form">
       <form onSubmit={submit}>
@@ -41,11 +49,11 @@ const UpdateUser = ({ userId, navigate }) => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a user info in database.</Text>
             <Form success>
-              <Form.Input type="text" name='name' onChange={handleChange} placeholder="Name: " />
-              <Form.Input type="text" name='surname' onChange={handleChange} placeholder="Surname: " />
-              <Form.Input type="text" name='address' onChange={handleChange} placeholder="Address: " />
-              <Form.Input type="text" name='email' onChange={handleChange} placeholder="Email: " />
-              <Form.Input type="text" name='password' onChange={handleChange} placeholder="Password: " />
+              <Form.Input type="text" name='name' onChange={handleChange} placeholder={user.name} />
+              <Form.Input type="text" name='surname' onChange={handleChange} placeholder={user.surname} />
+              <Form.Input type="text" name='address' onChange={handleChange} placeholder={user.address} />
+              <Form.Input type="text" name='email' onChange={handleChange} placeholder={user.email} />
+              <Form.Input type="text" name='password' onChange={handleChange} placeholder={user.password} />
               <Button inverted color='grey' size='massive'>Update user</Button>
             </Form>
           </Grid.Column>
