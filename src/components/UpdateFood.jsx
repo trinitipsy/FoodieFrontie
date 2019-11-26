@@ -29,6 +29,7 @@ const UpdateFood = ({ foodId, navigate }) => {
   };
 
   const handleChange = (event) => {
+    console.log("123");
     food[event.target.name] = event.target.value;
     setFood(food);
   };
@@ -48,7 +49,7 @@ const UpdateFood = ({ foodId, navigate }) => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a food in database.</Text>
             <Form success>
-              <Form.Input type="text" name='name' onChange={handleChange} placeholder={food.name} />
+              <Form.Input type="text" name='name' onChange={handleChange} value={food.name}  />
               <Form.Input type="text" name='price' onChange={handleChange} placeholder={food.price} />
               <Form.Input type="text" name='description' onChange={handleChange} placeholder={food.description} />
               <Button inverted color='grey' size='massive'>Update food</Button>

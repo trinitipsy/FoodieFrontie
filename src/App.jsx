@@ -36,19 +36,19 @@ const App = () => {
         <CheckIn path="/" />
         <LandingPage path="/home" />
         <Restaurants path="/restaurants" />
-        <RestaurantDetails path="/restaurants/:restaurantId" />
+        <RestaurantDetails path="/restaurants/:restaurantId/menu" />
         <Contact path="/contact" />
         <LogIn path="/log-in" />
         <SignUp path="/sign-up" />
         <AddRestaurant path="restaurants/add" />
         <NotFound default />
         <DeleteRestaurant path="/restaurants/:restaurantId/delete" />
-        <UpdateRestaurant path="/restaurants/:restaurantId/update-restaurant" />
-        <DeleteFood path="/restaurants/:foodId/delete-food" />
-        <UpdateFood path="/restaurants/:foodId/update-food" />
+        <UpdateRestaurant path="/restaurants/:restaurantId/update" />
+        <DeleteFood path="/food/:foodId/delete" />
+        <UpdateFood path="/food/:foodId/update" />
         <AddFood path="/restaurants/:restaurantId/add-food" />
         <Users path="/users" />
-        <UpdateUser path="/users/update-user" />
+        <UpdateUser path="/users/update" />
         <Settings path="/settings" />
       </Router>
       <Footer />

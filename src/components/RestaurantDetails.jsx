@@ -70,13 +70,13 @@ const RestaurantDetails = ({ restaurantId }) => {
                 <Button inverted color='black' size='big' onClick={() => addItem(food)} >Add to cart</Button>
               }
               {isAdmin &&
-                <Link to={`/restaurants/${food.id}/update-food`}>
+                <Link to={`/food/${food.id}/update`}>
                   <Button inverted color='black' size='big'>Update food</Button>
                 </Link>
               }
 
               {isAdmin &&
-                <Link to={`/restaurants/${food.id}/delete-food`}>
+                <Link to={`/food/${food.id}/delete`}>
                   <Button inverted color='black' size='big'>Delete food</Button>
                 </Link>
               }

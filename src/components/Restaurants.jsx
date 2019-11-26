@@ -37,11 +37,11 @@ const Restaurants = ({ navigate }) => {
                 <Text>{description}</Text>
                 <Text>{email}</Text>
                 <Button.Group vertical>
-                  <Link to={`/restaurants/${id}`}>
+                  <Link to={`/restaurants/${id}/menu`}>
                     <Button inverted color='black' size='big'>Check the menu</Button>
                   </Link>
                   {isAdmin &&
-                    <Link to={`/restaurants/${id}/update-restaurant`}>
+                    <Link to={`/restaurants/${id}/update`}>
                       <Button inverted color='black' size='big'>Update restaurant</Button>
                     </Link>
                   }

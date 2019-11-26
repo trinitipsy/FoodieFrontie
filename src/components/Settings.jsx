@@ -31,6 +31,7 @@ const Settings = () => {
 
       { headers: { 'Content-Type': 'application/json' } }
     );
+    AuthService.logOut();
     window.location.href = '/';
   };
 
@@ -43,7 +44,7 @@ const Settings = () => {
     <StyledWrapper centered columns={2}>
       <Button.Group vertical>
      
-        <Link to={'/users/update-user'}>
+        <Link to={'/users/update'}>
           <Button inverted color='black' size='massive'>Update account</Button>
         </Link>
         <Modal

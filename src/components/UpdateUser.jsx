@@ -54,7 +54,7 @@ const UpdateUser = ({ userId, navigate }) => {
               <Form.Input type="text" name='address' onChange={handleChange} placeholder={user.address} />
               <Form.Input type="text" name='email' onChange={handleChange} placeholder={user.email} />
               <Form.Input type="text" name='password' onChange={handleChange} placeholder={user.password} />
-              <Button inverted color='grey' size='massive'>Update user</Button>
+              <Button inverted color='grey' size='massive'>Update account</Button>
             </Form>
           </Grid.Column>
         </Grid>
