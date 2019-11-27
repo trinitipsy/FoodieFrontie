@@ -16,7 +16,7 @@ const Users = () => {
     }
     fetchUsers();
   }, []);
- 
+
 
   return users.map(({ id, name, surname, address }) => (
     <StyledWrapper>

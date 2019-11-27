@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Redirect, Router } from '@reach/router';
 import Navbar from './components/Navbar'
 import Contact from './components/Contact';
-import LandingPage from './components/LandingPage';
 import Restaurants from './components/Restaurants';
 import RestaurantDetails from './components/RestaurantDetails';
 import LogIn from './components/LogIn';
@@ -21,14 +20,15 @@ import AuthService from "./service/AuthService";
 import CheckIn from './components/CheckIn';
 import Settings from './components/Settings';
 import Text from './components/Text';
+import LandingPage from './components/LandingPage';
 
 const NotFound = () => <div className="notFoundPage"><Text>404 - Page Not Found</Text></div>;
 
 const redirectCheckIn = <Redirect from="" to="/" noThrow />;
 
-// const UserRoute = ({ component: Component, ...rest }) => (
-//   AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
-// );
+ const UserRoute = ({ component: Component, ...rest }) => (
+   AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
+ );
 const AdminRoute = ({ component: Component, ...rest }) => (
   AuthService.isAdmin() ? <Component {...rest} /> : redirectCheckIn
 );

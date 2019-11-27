@@ -29,6 +29,9 @@ const LogIn = ( { navigate } ) => {
         } else {
           this.setState({ message: res.data.message });
         }
+      }).catch(function (e) {
+        console.error(e);
+        alert("Something went wrong. Check the information you entered.");
       });
   };
   return (
@@ -39,7 +42,7 @@ const LogIn = ( { navigate } ) => {
             <Text>Welcome! <br />Please enter your mail and password below.</Text>
             <Form success>
               <Form.Input placeholder='Email:' type="text" name="username" onChange={handleChange} />
-              <Form.Input placeholder='Password:' type="text" name="password" onChange={handleChange} />
+              <Form.Input placeholder='Password:' type="password" name="password" onChange={handleChange} />
               <Button inverted color='black' size='massive'>Log in</Button>
             </Form>
           </Grid.Column>

@@ -11,34 +11,41 @@ const SignUp = () => {
     surname: '',
     address: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPass: ''
   });
 
   const handleChange = (event) => {
     user[event.target.name] = event.target.value;
     setUser(user);
+
+
   };
 
   const submit = (event) => {
-    const response = axios.post(
-      'users',
-      user,
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-    response.then(res => {
-      if (res.status === 200) {
-        localStorage.setItem("userInfo", JSON.stringify(res.data));
-        axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
-        window.location.href = "/home";
-      } else {
-        console.log("Something went wrong.")
-        window.location.href = "/";
-      }
-    }).catch(function (e) {
-      console.error(e);
-      alert("Something went wrong. Check the information you entered.");
-    });
-    event.preventDefault();
+    if (user.password !== user.confirmPass) {
+      alert("Password do not match!!!")
+    } else {
+      const response = axios.post(
+        'users',
+        user,
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+      response.then(res => {
+        if (res.status === 200) {
+          localStorage.setItem("userInfo", JSON.stringify(res.data));
+          axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
+          window.location.href = "/home";
+        } else {
+          console.log("Something went wrong.")
+          window.location.href = "/";
+        }
+      }).catch(function (e) {
+        console.error(e);
+        alert("Something went wrong. Check the information you entered.");
+      });
+      event.preventDefault();
+    }
   }
 
   return (
@@ -52,7 +59,8 @@ const SignUp = () => {
               <Form.Input type="text" name='surname' onChange={handleChange} placeholder='Surname:' />
               <Form.Input type="text" name='address' onChange={handleChange} placeholder='Address: ' />
               <Form.Input type="text" name='email' onChange={handleChange} placeholder='Email: example@gmail.come ' />
-              <Form.Input type="text" name='password' onChange={handleChange} placeholder='Password: ' />
+              <Form.Input type="password" name='password' onChange={handleChange} placeholder='Password: ' />
+              <Form.Input type="password" name='confirmPass' onChange={handleChange} placeholder='Confirm password: ' />
               <Button inverted color='black' size='massive'>Sign up</Button>
             </Form>
           </Grid.Column>
