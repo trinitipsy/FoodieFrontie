@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState, Fragment } from 'react';
 import { Icon, Grid, Statistic } from 'semantic-ui-react';
 import Text from './Text';
 import styled from 'styled-components';
+import axios from '../API/AxiosInstance';
 
-const Footer = () => (
+const Footer = () => {
+  const [foodSum, setFoodSum] = useState({
+    count: 0
+  });
+
+  const fetchFoodSum = async () => {
+    const { data } = await axios('foods/count');
+    setFoodSum(data);
+  };
+
+  useEffect(() => {
+    fetchFoodSum();
+  }, []);
+
+  return (
   <StyledWrraper>
     <Statistic.Group widths='four'>
       <Statistic>
@@ -15,12 +30,8 @@ const Footer = () => (
         <Text>Signups</Text>
       </Statistic>
       <Statistic>
-        <Text fontSize={30}><Icon name='food' />250+</Text>
+  <Text fontSize={30}><Icon name='food' />{foodSum.count}</Text>
         <Text>meals</Text>
-      </Statistic>
-      <Statistic>
-        <Text fontSize={30}>42</Text>
-        <Text>team members</Text>
       </Statistic>
     </Statistic.Group>
     <div className="copyright">
@@ -28,7 +39,8 @@ const Footer = () => (
     </div>
 
   </StyledWrraper>
-)
+  )
+}
 
 const StyledWrraper = styled.div`
   padding: 100px;
