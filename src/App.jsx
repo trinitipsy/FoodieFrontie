@@ -22,13 +22,13 @@ import CheckIn from './components/CheckIn';
 import Settings from './components/Settings';
 import Text from './components/Text';
 
-const NotFound = () => <div><Text>404 - Page Not Found</Text></div>;
+const NotFound = () => <div className="notFoundPage"><Text>404 - Page Not Found</Text></div>;
 
 const redirectCheckIn = <Redirect from="" to="/" noThrow />;
 
-const UserRoute = ({ component: Component, ...rest }) => (
-  AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
-);
+// const UserRoute = ({ component: Component, ...rest }) => (
+//   AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
+// );
 const AdminRoute = ({ component: Component, ...rest }) => (
   AuthService.isAdmin() ? <Component {...rest} /> : redirectCheckIn
 );
@@ -48,7 +48,7 @@ const App = () => {
       }
       <Router>
         <CheckIn path="/" />
-        <UserRoute path="/home" component={LandingPage} />
+        <ProtectedRoute path="/home" component={LandingPage} />
         <ProtectedRoute path="/restaurants" component={Restaurants} />
         <ProtectedRoute path="/restaurants/:restaurantId/menu" component={RestaurantDetails} />
         <ProtectedRoute path="/contact" component={Contact} />
@@ -74,6 +74,9 @@ const App = () => {
 const StyledWrapper = styled.div`
   text-align: center;
   background-color: #0d0d0d;
-
+  .notFoundPage {
+    height: 300px;
+    padding: 100px;
+  }
 `;
 export default App;

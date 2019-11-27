@@ -49,11 +49,11 @@ const UpdateUser = ({ userId, navigate }) => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a user info in database.</Text>
             <Form success>
-              <Form.Input type="text" name='name' onChange={handleChange} placeholder={user.name} />
-              <Form.Input type="text" name='surname' onChange={handleChange} placeholder={user.surname} />
-              <Form.Input type="text" name='address' onChange={handleChange} placeholder={user.address} />
-              <Form.Input type="text" name='email' onChange={handleChange} placeholder={user.email} />
-              <Form.Input type="text" name='password' onChange={handleChange} placeholder={user.password} />
+              <Form.Input type="text" name='name' onChange={handleChange} defaultValue={user.name} />
+              <Form.Input type="text" name='surname' onChange={handleChange} defaultValue={user.surname} />
+              <Form.Input type="text" name='address' onChange={handleChange} defaultValue={user.address} />
+              <Form.Input type="text" name='email' onChange={handleChange} defaultValue={user.email} />
+              <Form.Input type="text" name='password' onChange={handleChange} defaultValue={user.password} />
               <Button inverted color='grey' size='massive'>Update account</Button>
             </Form>
           </Grid.Column>

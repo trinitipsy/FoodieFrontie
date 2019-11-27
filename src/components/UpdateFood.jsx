@@ -49,9 +49,9 @@ const UpdateFood = ({ foodId, navigate }) => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a food in database.</Text>
             <Form success>
-              <Form.Input type="text" name='name' onChange={handleChange} value={food.name}  />
-              <Form.Input type="text" name='price' onChange={handleChange} placeholder={food.price} />
-              <Form.Input type="text" name='description' onChange={handleChange} placeholder={food.description} />
+              <Form.Input type="text" name='name' onChange={handleChange} defaultValue={food.name}  />
+              <Form.Input type="text" name='price' onChange={handleChange} defaultValue={food.price} />
+              <Form.Input type="text" name='description' onChange={handleChange} defaultValue={food.description} />
               <Button inverted color='grey' size='massive'>Update food</Button>
             </Form>
           </Grid.Column>

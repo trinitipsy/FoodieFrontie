@@ -19,6 +19,7 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
       setRestaurant(data);
     }
     fetchRestaurant();
+    console.log(restaurant.name)
   }, []);
 
   const submit = (event) => {
@@ -50,10 +51,10 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
           <Grid.Column>
             <Text>Be careful! <br />You are about to update a restaurant info in database.</Text>
             <Form success>
-              <Form.Input type="text" name='name' onChange={handleChange} placeholder={restaurant.name} />
-              <Form.Input type="text" name='email' onChange={handleChange} placeholder={restaurant.email} />
-              <Form.Input type="text" name='address' onChange={handleChange} placeholder={restaurant.address} />
-              <Form.Input type="text" name='description' onChange={handleChange} placeholder={restaurant.description} />
+              <Form.Input type="text" name='name' onChange={handleChange} defaultValue={restaurant.name} />
+              <Form.Input type="text" name='email' onChange={handleChange} defaultValue={restaurant.email} />
+              <Form.Input type="text" name='address' onChange={handleChange} defaultValue={restaurant.address} />
+              <Form.Input type="text" name='description' onChange={handleChange} defaultValue={restaurant.description} />
               <Button inverted color='black' size='big'>Update restaurant</Button>
             </Form>
           </Grid.Column>
