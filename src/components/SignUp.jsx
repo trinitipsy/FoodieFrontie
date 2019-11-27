@@ -31,8 +31,12 @@ const SignUp = () => {
         axios.defaults.headers.common['Authorization'] = AuthService.getAuthorization();
         window.location.href = "/home";
       } else {
-        this.setState({ message: res.data.message });
+        console.log("Something went wrong.")
+        window.location.href = "/";
       }
+    }).catch(function (e) {
+      console.error(e);
+      alert("Something went wrong. Check the information you entered.");
     });
     event.preventDefault();
   }
