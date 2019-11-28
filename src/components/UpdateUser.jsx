@@ -14,19 +14,23 @@ const UpdateUser = ({ userId, navigate }) => {
   });
 
   const submit = event => {
-    const response = axios.put(
-      `users`,
-      user,
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-    response
-      .then(() => {
-        navigate('/users');
-      })
-      .catch(err => {
-        alert(`Error occurred: ${err.message}`);
-      });
-    event.preventDefault();
+    if (user.password !== user.confirmPass) {
+      alert("Password do not match!!!")
+    } else {
+      const response = axios.put(
+        `users`,
+        user,
+        { headers: { 'Content-Type': 'application/json' } }
+      );
+      response
+        .then(() => {
+          navigate('/home');
+        })
+        .catch(err => {
+          alert(`Error occurred: ${err.message}`);
+        });
+      event.preventDefault();
+    }
   };
 
   const handleChange = (event) => {
@@ -53,7 +57,8 @@ const UpdateUser = ({ userId, navigate }) => {
               <Form.Input type="text" name='surname' onChange={handleChange} defaultValue={user.surname} />
               <Form.Input type="text" name='address' onChange={handleChange} defaultValue={user.address} />
               <Form.Input type="text" name='email' onChange={handleChange} defaultValue={user.email} />
-              <Form.Input type="text" name='password' onChange={handleChange} defaultValue={user.password} />
+              <Form.Input type="password" name='password' onChange={handleChange} placeholder='Password: ' />
+              <Form.Input type="password" name='confirmPass' onChange={handleChange} placeholder='Confirm password: ' />
               <Button inverted color='grey' size='massive'>Update account</Button>
             </Form>
           </Grid.Column>
