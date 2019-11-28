@@ -26,9 +26,9 @@ const NotFound = () => <div className="notFoundPage"><Text>404 - Page Not Found<
 
 const redirectCheckIn = <Redirect from="" to="/" noThrow />;
 
- const UserRoute = ({ component: Component, ...rest }) => (
-   AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
- );
+const UserRoute = ({ component: Component, ...rest }) => (
+  AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
+);
 const AdminRoute = ({ component: Component, ...rest }) => (
   AuthService.isAdmin() ? <Component {...rest} /> : redirectCheckIn
 );
@@ -43,9 +43,7 @@ const App = () => {
 
   return (
     <StyledWrapper>
-      {isLoggedIn &&
-        <Navbar />
-      }
+      <ProtectedRoute component={Navbar} />
       <Router>
         <CheckIn path="/" />
         <ProtectedRoute path="/home" component={LandingPage} />
@@ -62,12 +60,10 @@ const App = () => {
         <AdminRoute path="/food/:foodId/update" component={UpdateFood} />
         <AdminRoute path="/restaurants/:restaurantId/add-food" component={AddFood} />
         <AdminRoute path="/users" component={Users} />
-        <AdminRoute path="/users/update" component={UpdateUser} />
+        <ProtectedRoute path="/users/update" component={UpdateUser} />
         <ProtectedRoute path="/settings" component={Settings} />
       </Router>
-      {isLoggedIn &&
-        <Footer />
-      }
+      <ProtectedRoute component={Footer} />
     </StyledWrapper>);
 };
 
