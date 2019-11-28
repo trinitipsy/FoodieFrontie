@@ -20,7 +20,8 @@ const UpdateFood = ({ foodId, navigate }) => {
     );
     response
       .then(() => {
-        navigate('/restaurants');
+        window.location.href="/restaurants";
+        // navigate('/restaurants');
       })
       .catch(err => {
         alert(`Error occurred: ${err.message}`);

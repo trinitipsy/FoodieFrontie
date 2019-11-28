@@ -42,7 +42,7 @@ const LogIn = ( { navigate } ) => {
             <Text>Welcome! <br />Please enter your mail and password below.</Text>
             <Form success>
               <Form.Input placeholder='Email:' type="text" name="username" onChange={handleChange} />
-              <Form.Input placeholder='Password:' type="password" name="password" onChange={handleChange} />
+              <Form.Input error placeholder='Password:' type="password" name="password" onChange={handleChange} />
               <Button inverted color='black' size='massive'>Log in</Button>
             </Form>
           </Grid.Column>

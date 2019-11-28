@@ -35,6 +35,7 @@ const RestaurantDetails = ({ restaurantId }) => {
     response.then(({ data }) => {
       alert(`Order created with id=${data.id}`);
       clearAllItems();
+      window.location.href="/restaurants";
     });
   };
 

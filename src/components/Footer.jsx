@@ -45,15 +45,15 @@ const Footer = () => {
         </Statistic>
         <Statistic>
           <Text fontSize={30}>{userCount.count}</Text>
-          <Text>Signups</Text>
+          <Text>users</Text>
         </Statistic>
         <Statistic>
           <Text fontSize={30}><Icon name='food' />{foodCount.count}</Text>
-          <Text>meals</Text>
+          <Text>different foods</Text>
         </Statistic>
       </Statistic.Group>
       <div className="copyright">
-        <Text fontSize={10} >Copyright © 2006-2019 FoodSetGo.com - a PLOTUN service. All Rights Reserved.</Text>
+        <Text fontSize={10} >Copyright © 2019-2019 FoodSetGo.com. All Rights Reserved.</Text>
       </div>
 
     </StyledWrraper>

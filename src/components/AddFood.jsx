@@ -21,7 +21,8 @@ const AddFood = ({ restaurantId, navigate }) => {
 
     response.then(value => {
       console.log(value.data);
-      navigate('/restaurants');
+      window.location.href='/restaurants';
+      // navigate('/restaurants');
     });
     event.preventDefault();
   };

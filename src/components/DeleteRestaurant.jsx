@@ -13,7 +13,8 @@ const DeleteRestaurant = ({ restaurantId, navigate }) => {
     );
     response
       .then(() => {
-        navigate('/restaurants');
+        window.location.href="/restaurants";
+    // navigate('/restaurants');
       })
       .catch(err => {
         alert(`Error occurred: ${err.message}`);
@@ -22,7 +23,8 @@ const DeleteRestaurant = ({ restaurantId, navigate }) => {
   };
 
   const handleClose = () => {
-    navigate('/restaurants');
+    window.location.href="/restaurants";
+    // navigate('/restaurants');
   }
 
   return (
