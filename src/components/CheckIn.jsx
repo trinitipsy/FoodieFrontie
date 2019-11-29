@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 import Text from './Text';
-import { Form, Grid, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 const CheckIn = () => (
   <StyledWrapper>

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React from 'react';
 import axios from '../API/AxiosInstance';
 import Text from './Text';
 import styled from 'styled-components';

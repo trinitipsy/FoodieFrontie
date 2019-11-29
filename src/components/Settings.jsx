@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react';
-import { Modal, Icon, Button, Grid } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Modal, Icon, Button } from 'semantic-ui-react';
 import { Link } from '@reach/router';
 import axios from '../API/AxiosInstance';
 import styled from 'styled-components';

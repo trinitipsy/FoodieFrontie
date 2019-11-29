@@ -46,11 +46,11 @@ export class AuthService {
   }
 
   isUser() {
-    return this.getRole() == 'ROLE_USER';
+    return this.getRole() === 'ROLE_USER';
   }
 
   isAdmin() {
-    return this.getRole() == 'ROLE_ADMIN';
+    return this.getRole() === 'ROLE_ADMIN';
   }
 
 }

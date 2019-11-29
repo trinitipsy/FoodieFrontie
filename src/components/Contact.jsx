@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Form, Message, Grid, Button } from 'semantic-ui-react';
+import { Form, Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
 import axios from '../API/AxiosInstance';
 

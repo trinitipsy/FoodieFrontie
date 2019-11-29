@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from '@reach/router';
 import styled from 'styled-components';
 import axios from '../API/AxiosInstance';
-import { Grid, Button, Icon, Modal } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import Text from './Text';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
-  const [modalStateDelete, setModalStateDelete] = useState('');
 
   useEffect(() => {
     const fetchUsers = async () => {

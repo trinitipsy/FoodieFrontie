@@ -14,12 +14,12 @@ const navbarLinks = [
 const createNavbarLinks = isAdmin => navbarLinks
   .map(link => {
     if (isAdmin || !link.isAdminPage) {
-      return <Link to={link.path}><li>{link.name}</li></Link>;
+      return <Link to={link.path}><li key={link.name}>{link.name}</li></Link>;
     }
     return null;
   });
 
-const isAdmin = AuthService.getRole() == 'ROLE_ADMIN';
+const isAdmin = AuthService.getRole() === 'ROLE_ADMIN';
 const Navbar = ({ user = { isAdmin } }) => {
 
   return (

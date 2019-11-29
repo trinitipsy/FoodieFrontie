@@ -4,7 +4,7 @@ import Text from './Text';
 import styled from 'styled-components';
 import { Form, Grid, Button } from 'semantic-ui-react';
 
-const UpdateUser = ({ userId, navigate }) => {
+const UpdateUser = ({ navigate }) => {
   const [user, setUser] = useState({
     name: '',
     surname: '',

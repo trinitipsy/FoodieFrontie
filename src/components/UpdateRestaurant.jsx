@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Form, Grid, Button } from 'semantic-ui-react';
 
 
-const UpdateRestaurant = ({ restaurantId, navigate }) => {
+const UpdateRestaurant = ({ restaurantId }) => {
   const [restaurant, setRestaurant] = useState({
     name: '',
     email: '',
@@ -20,7 +20,7 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
     }
     fetchRestaurant();
     console.log(restaurant.name)
-  }, []);
+  });
 
   const submit = (event) => {
     const response = axios.put(
@@ -31,7 +31,6 @@ const UpdateRestaurant = ({ restaurantId, navigate }) => {
     response
       .then(() => {
         window.location.href="/restaurants";
-    // navigate('/restaurants');
       })
       .catch(err => {
         alert(`Error occurred: ${err.message}`);

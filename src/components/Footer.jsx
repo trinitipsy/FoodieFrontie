@@ -1,5 +1,5 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { Icon, Grid, Statistic } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Icon, Statistic } from 'semantic-ui-react';
 import Text from './Text';
 import styled from 'styled-components';
 import axios from '../API/AxiosInstance';

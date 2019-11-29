@@ -6,7 +6,7 @@ import { Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
 import AuthService from '../service/AuthService';
 
-const Restaurants = ({ navigate }) => {
+const Restaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Restaurants = ({ navigate }) => {
     fetchRestaurants();
   }, []);
 
-  const isAdmin = AuthService.getRole() == 'ROLE_ADMIN';
+  const isAdmin = AuthService.getRole() === 'ROLE_ADMIN';
 
   return (
     <StyledWrapper>

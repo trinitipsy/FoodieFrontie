@@ -3,7 +3,7 @@ import axios from '../API/AxiosInstance';
 import Text from './Text';
 import { Link } from '@reach/router';
 import AuthService from '../service/AuthService';
-import { Button, Form } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const RestaurantDetails = ({ restaurantId }) => {
@@ -47,10 +47,10 @@ const RestaurantDetails = ({ restaurantId }) => {
 
   useEffect(() => {
     fetchRestaurant();
-  }, [cart]);
+  });
 
 
-  const isAdmin = AuthService.getRole() == 'ROLE_ADMIN';
+  const isAdmin = AuthService.getRole() === 'ROLE_ADMIN';
 
   return (
     <StyledWrapper>

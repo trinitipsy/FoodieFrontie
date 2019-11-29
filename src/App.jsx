@@ -26,9 +26,6 @@ const NotFound = () => <div className="notFoundPage"><Text>404 - Page Not Found<
 
 const redirectCheckIn = <Redirect from="" to="/" noThrow />;
 
-const UserRoute = ({ component: Component, ...rest }) => (
-  AuthService.isUser() ? <Component {...rest} /> : redirectCheckIn
-);
 const AdminRoute = ({ component: Component, ...rest }) => (
   AuthService.isAdmin() ? <Component {...rest} /> : redirectCheckIn
 );
@@ -38,9 +35,6 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
 
 
 const App = () => {
-
-  const isLoggedIn = AuthService.getRole() != null;
-
   return (
     <StyledWrapper>
       <ProtectedRoute component={Navbar} />

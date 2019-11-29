@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Form, Grid, Button } from 'semantic-ui-react';
 import Text from './Text';
@@ -49,7 +49,7 @@ const SignUp = () => {
   }
 
   return (
-    <StyledWrapper class="ui form">
+    <StyledWrapper className="ui form">
       <form onSubmit={submit}>
         <Grid centered columns={3}>
           <Grid.Column>

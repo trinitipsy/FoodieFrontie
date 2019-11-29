@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Form, Grid, Button } from 'semantic-ui-react';
 
 
-const UpdateFood = ({ foodId, navigate }) => {
+const UpdateFood = ({ foodId }) => {
   const [food, setFood] = useState({
     name: '',
     price: '',
@@ -21,7 +21,6 @@ const UpdateFood = ({ foodId, navigate }) => {
     response
       .then(() => {
         window.location.href="/restaurants";
-        // navigate('/restaurants');
       })
       .catch(err => {
         alert(`Error occurred: ${err.message}`);
@@ -41,7 +40,7 @@ const UpdateFood = ({ foodId, navigate }) => {
       setFood(data);
     }
     fetchFood();
-  }, []);
+  });
 
   return (
     <StyledWrapper class="ui form">

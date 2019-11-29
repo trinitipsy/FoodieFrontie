@@ -4,7 +4,7 @@ import { Form, Grid , Button } from 'semantic-ui-react';
 import Text from './Text';
 import styled from 'styled-components';
 
-const AddFood = ({ restaurantId, navigate }) => {
+const AddFood = ({ restaurantId }) => {
   const [food, setfood] = useState({
     name: '',
     price: '',
@@ -12,7 +12,6 @@ const AddFood = ({ restaurantId, navigate }) => {
   });
 
   const submit = (event) => {
-    console.log(food.name);
     const response = axios.post(
       `foods/${restaurantId}`,
       food,
@@ -22,7 +21,6 @@ const AddFood = ({ restaurantId, navigate }) => {
     response.then(value => {
       console.log(value.data);
       window.location.href='/restaurants';
-      // navigate('/restaurants');
     });
     event.preventDefault();
   };
