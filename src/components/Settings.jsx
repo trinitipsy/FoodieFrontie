@@ -26,7 +26,7 @@ const Settings = () => {
   };
 
   const deleteUser = () => {
-    const response = axios.delete(
+    axios.delete(
       'users',
 
       { headers: { 'Content-Type': 'application/json' } }

@@ -6,7 +6,7 @@ import AuthService from '../service/AuthService';
 import { Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 
-const RestaurantDetails = ({ restaurantId }) => {
+const RestaurantDetails = ({ restaurantId, navigate }) => {
   const [restaurant, setRestaurant] = useState({});
   const [menu, setMenu] = useState([]);
   const [cart, setCart] = useState({ foods: [] });
@@ -35,7 +35,7 @@ const RestaurantDetails = ({ restaurantId }) => {
     response.then(({ data }) => {
       alert(`Order created with id=${data.id}`);
       clearAllItems();
-      window.location.href="/restaurants";
+      navigate("/restaurants");
     });
   };
 
@@ -47,7 +47,7 @@ const RestaurantDetails = ({ restaurantId }) => {
 
   useEffect(() => {
     fetchRestaurant();
-  });
+  }, [cart]);
 
 
   const isAdmin = AuthService.getRole() === 'ROLE_ADMIN';
